@@ -1,0 +1,137 @@
+{
+  "generator": {
+    "seed": 42,
+    "frozen_at": "2026-10-28",
+    "history_end": "2026-11-25",
+    "history_days": 1095,
+    "feed_days": 30,
+    "usage_rollup_period_days": 35
+  },
+  "volumes": {
+    "accounts": 5000,
+    "events": 208919,
+    "by_source": {
+      "crm": 25704,
+      "billing": 41306,
+      "email": 25842,
+      "product": 86201,
+      "support": 29866
+    },
+    "by_tenant": {
+      "Copperleaf Logistics": 33708,
+      "Northwind Analytics": 109869,
+      "Bluefin Health": 57321,
+      "Driftwood Studio": 8021
+    },
+    "accounts_by_tenant": {
+      "Northwind Analytics": 2600,
+      "Bluefin Health": 1400,
+      "Copperleaf Logistics": 800,
+      "Driftwood Studio": 200
+    }
+  },
+  "defects": {
+    "late": 12070,
+    "update_before_create": 744,
+    "missing_field": 2929,
+    "orphan_record": 609,
+    "clock_skew": 163,
+    "duplicate": 5095,
+    "naive_timestamp": 86201,
+    "out_of_order_deliveries": 97722,
+    "crm_billing_conflict_accounts": 236,
+    "unmatched_records": 635
+  },
+  "sparse": {
+    "alive_accounts": 4053,
+    "sparse_accounts": 417,
+    "sparse_share": 0.1029
+  },
+  "outcomes": {
+    "recorded_renewals": 7573,
+    "churned": 947,
+    "term_churn_rate_per_renewal": 0.0949,
+    "downgraded": 529,
+    "silent_churn": 164,
+    "silent_share_of_churn": 0.1732
+  },
+  "planted_drivers": [
+    {
+      "name": "usage_decline",
+      "definition": "Active users fall 35\u201365% over the ~60\u2013120 days before renewal",
+      "log_odds_effect": 1.7,
+      "prevalence": 0.1077,
+      "churn_rate_with": 0.3279,
+      "churn_rate_without": 0.0488,
+      "expected_signals": [
+        "usage_trend_60d",
+        "sessions_trend_60d",
+        "active_user_ratio"
+      ]
+    },
+    {
+      "name": "seat_underutilisation",
+      "definition": "Under 35% of purchased seats active for the whole cycle",
+      "log_odds_effect": 1.1,
+      "prevalence": 0.0792,
+      "churn_rate_with": 0.184,
+      "churn_rate_without": 0.0698,
+      "expected_signals": [
+        "active_user_ratio",
+        "seat_utilisation"
+      ]
+    },
+    {
+      "name": "ticket_spike_slow_resolution",
+      "definition": "3\u20136 high/urgent tickets in a month, resolved in 5\u201315 days",
+      "log_odds_effect": 1.4,
+      "prevalence": 0.097,
+      "churn_rate_with": 0.2798,
+      "churn_rate_without": 0.0573,
+      "expected_signals": [
+        "high_urgent_tickets_30d",
+        "high_urgent_tickets_90d",
+        "tickets_30d",
+        "median_resolution_days_90d",
+        "ticket_trend"
+      ]
+    },
+    {
+      "name": "payment_failures",
+      "definition": "One or more failed invoice payment attempts, with retries",
+      "log_odds_effect": 1.5,
+      "prevalence": 0.0426,
+      "churn_rate_with": 0.2637,
+      "churn_rate_without": 0.0706,
+      "expected_signals": [
+        "payment_failures_90d",
+        "max_payment_attempt_90d"
+      ]
+    },
+    {
+      "name": "champion_departure",
+      "definition": "Champion contact removed in CRM; mail to them bounces",
+      "log_odds_effect": 1.6,
+      "prevalence": 0.0379,
+      "churn_rate_with": 0.2725,
+      "churn_rate_without": 0.0712,
+      "expected_signals": [
+        "champion_removed_90d",
+        "bounces_90d",
+        "net_contacts_change_90d"
+      ]
+    },
+    {
+      "name": "no_csm_contact",
+      "definition": "No CSM email to the customer for 120+ days before renewal",
+      "log_odds_effect": 0.9,
+      "prevalence": 0.1016,
+      "churn_rate_with": 0.1721,
+      "churn_rate_without": 0.0683,
+      "expected_signals": [
+        "days_since_csm_email",
+        "csm_emails_90d"
+      ]
+    }
+  ]
+}

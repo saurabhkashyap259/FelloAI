@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Team overview{% endblock %}
+{% block content %}
+<h1>Team overview</h1>
+{% include "_runmeta.html" %}
+<div class="card">
+  <table>
+    <tr><th>CSM</th><th class="num">Accounts</th><th class="num">Act this week</th><th class="num">Watch</th><th class="num">Overdue</th></tr>
+    {% for c in overview %}
+    <tr><td><a href="/worklist?owner={{ c.id }}">{{ c.display_name }}</a> <span class="meta">{{ c.email }}</span></td><td class="num">{{ c.accounts }}</td><td class="num">{{ c.high }}</td><td class="num">{{ c.medium }}</td><td class="num">{{ c.overdue }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+<h2>Unassigned queue</h2>
+{% set rows = data.groups | map(attribute="rows") | sum(start=[]) %}
+{% if rows %}<p><a href="/worklist?owner=unassigned">Open the unassigned worklist ({{ rows | length }} accounts)</a></p>{% else %}<p class="meta">No unassigned accounts.</p>{% endif %}
+<h2>Outcome unknown</h2>
+{% if unknown %}<table><tr><th>Account</th><th>Owner</th><th>Renewal date</th></tr>
+{% for a in unknown %}<tr><td><a href="/accounts/{{ a.id }}">{{ a.name }}</a></td><td>{{ a.owner_name or "Unassigned" }}</td><td>{{ a.renewal_date }}</td></tr>{% endfor %}</table>
+{% else %}<p class="meta">Billing and CRM agree on every recent renewal.</p>{% endif %}
+{% endblock %}

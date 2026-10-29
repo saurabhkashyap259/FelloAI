@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Model{% endblock %}
+{% macro pct(v) %}{{ "—" if v is undefined or v is none else ("%.0f%%" % (v * 100)) }}{% endmacro %}
+{% macro num(v, f="%.3f") %}{{ "—" if v is undefined or v is none else (f % v) }}{% endmacro %}
+{% block content %}
+<h1>How well the risk model works</h1>
+<p class="meta">Measured on a later period the model was not trained on, by replaying weekly worklists. Your organisation's results and pooled totals only.</p>
+{% if stale_retrain %}<div class="banner">No retrain has succeeded in the last 14 days. Scoring continues with the current approved model.</div>{% endif %}
+{% if not approved %}
+<div class="card">No approved model yet. Accounts show "No model yet" until training completes.</div>
+{% else %}
+<div class="card">
+  <strong>Approved model:</strong> {{ approved.algorithm }} ({{ approved.scope }}), history window <strong>{{ approved.history_window }}</strong>,
+  trained {{ approved.trained_at | dt }} · <span class="meta">{{ approved.id }}</span><br>
+  <span class="meta">Train / validate / test (by renewal date): before {{ approved.windows.valid_start }} / {{ approved.windows.valid_start }}–{{ approved.windows.test_start }} / {{ approved.windows.test_start }}–{{ approved.windows.label_end }}. Calibrated for your organisation ({{ approved.method }}).</span><br>
+  <span class="meta">Promotion decision: {{ approved.decision_reason }}</span>
+</div>
+<div class="grid2">
+  <div class="card">
+    <h2 style="margin-top:0">Your organisation</h2>
+    {% set m = tenant_eval %}
+    <table>
+      <tr><td>Churned accounts in test period</td><td class="num">{{ m.churned_accounts or 0 }}</td></tr>
+      <tr><td>Top-10 hit rate (churners that reached their CSM's "Act this week" list)</td><td class="num">{{ pct(m.top10_hit_rate) }}</td></tr>
+      <tr><td>…at least 60 days before renewal</td><td class="num">{{ pct(m.hit_rate_60d) }}</td></tr>
+      <tr><td>Median lead time</td><td class="num">{{ num(m.median_lead_days, "%.0f days") }}</td></tr>
+      <tr><td>Churn rate in "Act this week" vs. all scored</td><td class="num">{{ pct(m.high_band_churn_rate) }} vs {{ pct(m.base_churn_rate) }} ({{ num(m.high_band_lift, "%.1f×") }})</td></tr>
+      <tr><td>PR-AUC / Brier</td><td class="num">{{ num(m.pr_auc) }} / {{ num(m.brier, "%.4f") }}</td></tr>
+      <tr><td>Largest calibration gap (bins ≥50)</td><td class="num">{{ pct(m.calibration_max_gap) }}</td></tr>
+      <tr><td>Silent-churn accounts caught ≥30 days ahead</td><td class="num">{{ pct(m.silent_churn.recall_30d if m.silent_churn else none) }} of {{ m.silent_churn.count if m.silent_churn else 0 }}</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">Are the percentages honest?</h2>
+    {{ chart | safe }}
+    <p class="meta">Each dot is a tenth of your accounts: predicted risk vs. how often they actually churned. Dots on the dashed line = honest.</p>
+  </div>
+</div>
+<div class="card">
+  <h2 style="margin-top:0">Pooled totals (all organisations)</h2>
+  {% set o = pooled.overall or {} %}
+  <table>
+    <tr><th></th><th class="num">Chosen model</th><th class="num">Logistic baseline</th></tr>
+    <tr><td>Top-10 hit rate</td><td class="num">{{ pct(o.top10_hit_rate) }}</td><td class="num">{{ pct((pooled.baseline or {}).top10_hit_rate) }}</td></tr>
+    <tr><td>Hit ≥60 days before renewal</td><td class="num">{{ pct(o.hit_rate_60d) }}</td><td class="num">{{ pct((pooled.baseline or {}).hit_rate_60d) }}</td></tr>
+    <tr><td>Median lead time</td><td class="num">{{ num(o.median_lead_days, "%.0f d") }}</td><td class="num">{{ num((pooled.baseline or {}).median_lead_days, "%.0f d") }}</td></tr>
+    <tr><td>PR-AUC</td><td class="num">{{ num(o.pr_auc) }}</td><td class="num">{{ num((pooled.baseline or {}).pr_auc) }}</td></tr>
+    <tr><td>Brier</td><td class="num">{{ num(o.brier, "%.4f") }}</td><td class="num">{{ num((pooled.baseline or {}).brier, "%.4f") }}</td></tr>
+  </table>
+  <h3>Full history vs. last 18 months</h3>
+  <table><tr><th>Window</th><th class="num">Hit rate</th><th class="num">≥60 days</th><th class="num">PR-AUC</th><th class="num">Brier</th></tr>
+  {% for w, v in (pooled.history_window_comparison or {}).items() %}
+  <tr><td>{{ w }}{% if w == approved.history_window %} (used){% endif %}</td><td class="num">{{ pct(v.top10_hit_rate) }}</td><td class="num">{{ pct(v.hit_rate_60d) }}</td><td class="num">{{ num(v.pr_auc) }}</td><td class="num">{{ num(v.brier, "%.4f") }}</td></tr>
+  {% endfor %}</table>
+  {% if pooled.driver_recovery %}
+  <h3>Planted-driver recovery</h3>
+  <p class="meta">Top signals by mean absolute contribution: {{ pooled.driver_recovery.top10_signals | join(", ") }}</p>
+  <ul>{% for d, ok in pooled.driver_recovery.drivers.items() %}<li>{{ "✔" if ok else "✘" }} {{ d }}</li>{% endfor %}</ul>
+  {% endif %}
+  {% if pooled.success_criteria %}
+  <h3>Success criteria (pooled)</h3>
+  <ul>{% for k, ok in pooled.success_criteria.items() %}<li>{{ "✔" if ok else "✘ not met" }} {{ k }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endif %}
+<div class="card">
+  <h2 style="margin-top:0">Retrains and candidates</h2>
+  {% if last_retrain %}<p>Last retrain: <strong>{{ last_retrain.status }}</strong> for cutoff {{ last_retrain.cutoff_at | dt }} — {{ last_retrain.decision }}</p>{% endif %}
+  <div class="scroll"><table>
+    <tr><th>Trained</th><th>Model</th><th>Window</th><th>Status</th><th class="num">Hit rate</th><th class="num">PR-AUC</th><th>Decision</th></tr>
+    {% for h in history %}
+    <tr><td>{{ h.trained_at | dt }}</td><td>{{ h.algorithm }} ({{ h.scope }})</td><td>{{ h.history_window }}</td><td>{{ h.status }}</td>
+      <td class="num">{{ pct(h.hit | float if h.hit else none) }}</td><td class="num">{{ h.pr_auc[:5] if h.pr_auc else "—" }}</td><td class="meta">{{ h.decision_reason }}</td></tr>
+    {% endfor %}
+  </table></div>
+</div>
+{% endblock %}

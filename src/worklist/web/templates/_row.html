@@ -1,0 +1,24 @@
+<tr id="row-{{ row.account_id }}">
+  <td><a href="/accounts/{{ row.account_id }}"><strong>{{ row.name }}</strong></a>
+    {% if row.has_new_alert %} <span class="pill new">new</span>{% endif %}
+    {% if user and user.is_manager and row.owner_name %}<div class="meta">{{ row.owner_name }}</div>{% endif %}</td>
+  <td class="num">{% if row.probability is not none %}<strong>{{ row.probability | pct }}</strong>{% else %}<span class="muted">—</span>{% endif %}</td>
+  <td>{% if row.band %}<span class="pill band-{{ row.band }}">{{ row.band }}</span>{% else %}<span class="pill band-none">{{ row.state | replace("_", " ") }}</span>{% endif %}</td>
+  <td>{% if row.reasons %}<ul class="reasons">{% for r in row.reasons %}<li><a href="/accounts/{{ row.account_id }}/signals/{{ r.signal }}?score_id={{ row.score_id }}">{{ r.text }}</a></li>{% endfor %}</ul>{% else %}<span class="muted">—</span>{% endif %}</td>
+  <td>{{ row.confidence | replace("_", " ") }}</td>
+  <td class="num">{{ row.days_to_renewal if row.days_to_renewal is not none else "—" }}{% if row.days_to_renewal is not none %} d{% endif %}</td>
+  <td class="num">{{ row.arr | money }}</td>
+  <td>
+    {% if row.last_action %}<div class="meta">{{ row.last_action | replace("_", " ") }}{% if row.snooze_until %} until {{ row.snooze_until }}{% endif %}{% if row.last_reason %}: {{ row.last_reason }}{% endif %}</div>{% endif %}
+    <details><summary>Record action</summary>
+      <form hx-post="/accounts/{{ row.account_id }}/actions" hx-target="#row-{{ row.account_id }}" hx-swap="outerHTML" hx-target-error="#err-{{ row.account_id }}">
+        <input type="hidden" name="csrf_token" value="{{ user.csrf_token }}">
+        <select name="action"><option value="contacted">Contacted</option><option value="meeting_booked">Meeting booked</option><option value="snoozed">Snooze until…</option><option value="dismissed">Dismiss (reason)</option></select>
+        <input type="date" name="snooze_until" {% if today %}min="{{ today }}"{% endif %}>
+        <input name="reason" placeholder="Reason (for dismiss)">
+        <button>Save</button>
+        <div id="err-{{ row.account_id }}"></div>
+      </form>
+    </details>
+  </td>
+</tr>

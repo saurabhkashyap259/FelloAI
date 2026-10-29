@@ -1,0 +1,58 @@
+# Render Blueprint: web app, two scheduled jobs and managed Postgres 16 (research R14).
+databases:
+  - name: worklist-db
+    databaseName: worklist
+    postgresMajorVersion: "16"
+    plan: basic-256mb
+
+envVarGroups:
+  - name: worklist-shared
+    envVars:
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: WORKLIST_WEB_PASSWORD
+        generateValue: true
+      - key: WORKLIST_JOB_PASSWORD
+        generateValue: true
+      - key: DEMO_MODE
+        value: "true"
+      - key: DEMO_PASSWORD
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: claude-sonnet-5-5
+      - key: COOKIE_SECURE
+        value: "true"
+
+services:
+  - type: web
+    name: worklist-web
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    preDeployCommand: worklist db upgrade
+    envVars:
+      - fromGroup: worklist-shared
+      - key: DATABASE_URL_OWNER
+        fromDatabase: { name: worklist-db, property: connectionString }
+
+  - type: cron
+    name: worklist-nightly
+    runtime: docker
+    schedule: "0 2 * * *"
+    dockerCommand: worklist nightly
+    envVars:
+      - fromGroup: worklist-shared
+      - key: DATABASE_URL_OWNER
+        fromDatabase: { name: worklist-db, property: connectionString }
+
+  - type: cron
+    name: worklist-retrain
+    runtime: docker
+    schedule: "0 3 * * 0"
+    dockerCommand: worklist retrain
+    envVars:
+      - fromGroup: worklist-shared
+      - key: DATABASE_URL_OWNER
+        fromDatabase: { name: worklist-db, property: connectionString }

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ d.signal.name }} · {{ account.name }}{% endblock %}
+{% block content %}
+<p class="meta"><a href="/accounts/{{ account.id }}">← {{ account.name }}</a></p>
+<h1>{{ d.signal.name }}</h1>
+<div class="card">
+  <p><strong>Definition:</strong> {{ d.signal.label }}</p>
+  <p><strong>Value at cutoff:</strong> {{ formatted }}{% if contribution is not none %} · effect on risk {{ "%+.3f" % contribution }} log-odds{% endif %}</p>
+  <p class="meta">Source: {{ d.signal.source }} · kind: {{ d.signal.kind }} · score <code>{{ score.id }}</code> · data cutoff {{ score.cutoff_at | dt }}.
+  Only records received <em>and</em> matched to this account before the cutoff are counted{% if d.window_start %}; window searched (by when it happened): {{ d.window_start | dt }} → {{ d.cutoff | dt }}{% endif %}.</p>
+</div>
+{% if not d.signal.event_types %}
+<div class="card">This signal comes from the account's resolved facts (billing for contract value and renewal date, CRM for owner), not from individual events.</div>
+{% elif d.absence is not none and not d.absence.found_in_window %}
+<div class="card">
+  <p><strong>No qualifying records were found in the window searched.</strong></p>
+  {% set r = d.absence.latest_before %}
+  {% if r %}<p>Most recent qualifying record before the window: {{ r.event_type }} on {{ r.occurred_at | dt }} (received {{ r.ingested_at | dt }}) <code>{{ r.id }}</code></p>
+  {% else %}<p>None since the account started.</p>{% endif %}
+</div>
+{% else %}
+<div class="card">
+  <h2 style="margin-top:0">Source records ({{ d.total }}{% if d.total > d.records | length %}, showing {{ d.records | length }}{% endif %})</h2>
+  <div class="scroll"><table>
+    <tr><th>Happened</th><th>Received</th><th>Source</th><th>Type</th><th>Matched by</th><th>Details</th><th>Record</th></tr>
+    {% for r in d.records %}
+    <tr><td>{{ r.occurred_at | dt }}</td><td>{{ r.ingested_at | dt }}</td><td>{{ r.source }}</td><td>{{ r.event_type }}</td><td>{{ r.match_method }}</td>
+      <td class="meta">{% for k, v in r.payload.items() if k not in ("subject",) and not k.startswith("_") and v is not none %}{{ k }}={{ v }} {% endfor %}</td>
+      <td class="meta"><code>{{ (r.id | string)[:8] }}</code></td></tr>
+    {% endfor %}
+  </table></div>
+</div>
+{% endif %}
+{% endblock %}

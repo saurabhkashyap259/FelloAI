@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+{% include "_runmeta.html" %}
+{% for g in data.groups %}{% if g.rows %}
+<section>
+  <div class="group-h"><h2>{{ g.title }} ({{ g.rows | length }})</h2><span class="meta">{{ g.help }}</span></div>
+  <div class="scroll"><table>
+    <tr><th>Account</th><th class="num">Risk</th><th>Band</th><th>Top reasons</th><th>Confidence</th><th class="num">Renewal</th><th class="num">ARR</th><th>Action</th></tr>
+    {% for row in g.rows %}{% include "_row.html" %}{% endfor %}
+  </table></div>
+</section>
+{% endif %}{% endfor %}
+{% endblock %}

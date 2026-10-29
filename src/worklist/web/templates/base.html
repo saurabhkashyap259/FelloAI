@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Renewal Worklist{% endblock %}</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+{% if user %}
+<header class="top">
+  <span class="brand">Renewal Worklist</span>
+  <nav>
+    <a href="/">Worklist</a>
+    <a href="/alerts">Alerts{% if unread_alerts %} <span class="badge">{{ unread_alerts }}</span>{% endif %}</a>
+    <a href="/model">Model</a>
+    {% if user.is_manager %}<a href="/runs">Runs</a>{% endif %}
+  </nav>
+  <span class="who">{{ user.display_name }} · {{ user.tenant_name }} · {{ "CS manager" if user.is_manager else "CSM" }}</span>
+  <form class="inline" method="post" action="/logout"><input type="hidden" name="csrf_token" value="{{ user.csrf_token }}"><button>Sign out</button></form>
+</header>
+{% endif %}
+<main>
+  {% if latest_run and latest_run.status != 'succeeded' %}
+  <div class="banner">The latest nightly run (cutoff {{ latest_run.cutoff_at | dt }}) did not complete ({{ latest_run.status }}). Showing the last successful results.</div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

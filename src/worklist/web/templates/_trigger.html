@@ -1,0 +1,4 @@
+{%- set d = a.trigger_detail -%}
+{%- if a.trigger == "entered_top_k" -%}Entered "Act this week" (now #{{ d.current_rank }}{% if d.previous_band %}, was {{ d.previous_band }}{% endif %})
+{%- elif a.trigger == "risk_jump" -%}Risk jumped from {{ d.previous_probability | pct }} to {{ d.probability | pct }} in a week
+{%- else -%}{{ d.label | capitalize }}, renewal in {{ d.days_to_renewal }} days{%- endif -%}

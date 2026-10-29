@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Alert · {{ account.name }}{% endblock %}
+{% block content %}
+<p class="meta"><a href="/alerts">← Alerts</a></p>
+{% set a = alert %}
+<h1>{{ account.name }}</h1>
+<p><strong>{% include "_trigger.html" %}</strong></p>
+<p class="meta">Raised {{ alert.created_at | dt }} by the nightly agent · owner {{ account.owner_name or "Unassigned" }}{% if alert.raised_for_user_id != account.owner_user_id %} · originally raised for {{ raised_for or "CS managers (unassigned)" }}{% endif %} · status {{ alert.status }}
+  · risk {{ score.probability | pct }} ({{ score.band or score.state }}) · <a href="/accounts/{{ account.id }}/scores/{{ score.id }}">score record</a></p>
+{% if alert.status == "open" %}<form method="post" action="/alerts/{{ alert.id }}/acknowledge"><input type="hidden" name="csrf_token" value="{{ user.csrf_token }}"><button>Acknowledge</button></form>{% endif %}
+<div class="card">
+  <h2 style="margin-top:0">Evidence gathered</h2>
+  <ul>
+  {% for f in alert.evidence %}
+    <li {% if draft and f.fact_id in draft.facts_used %}class="cited"{% endif %}><code>{{ f.fact_id }}</code> {{ f.text }}
+      {% if f.raw_event_ids %}<details><summary>{{ f.raw_event_ids | length }} source records</summary><table>
+        {% for rid in f.raw_event_ids %}{% set r = records.get(rid) %}{% if r %}<tr><td>{{ r.occurred_at | dt }}</td><td>{{ r.source }}</td><td>{{ r.event_type }}</td><td class="meta">{% for k, v in r.payload.items() if not k.startswith("_") and v is not none %}{{ k }}={{ v }} {% endfor %}</td><td class="meta"><code>{{ rid[:8] }}</code></td></tr>{% endif %}{% endfor %}
+      </table></details>{% endif %}</li>
+  {% endfor %}
+  </ul>
+</div>
+{% include "_draft.html" %}
+{% endblock %}

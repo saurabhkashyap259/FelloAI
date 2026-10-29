@@ -1,0 +1,5 @@
+{% if data.run %}
+<p class="meta">Scores computed {{ data.run.finished_at | dt }} from data received before {{ data.run.cutoff_at | dt }} · run <code>{{ data.run.id | string | truncate(13, true, "") }}</code> · model <code>{{ (data.run.model_version_id | string)[:8] if data.run.model_version_id else "none" }}</code> · today (simulated) {{ data.today }}</p>
+{% else %}
+<div class="card">No successful scoring run yet. The nightly job will produce the first worklist.</div>
+{% endif %}

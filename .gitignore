@@ -1,0 +1,15 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Office lock files and the exercise brief (not ours to publish)
+~$*
+*.docx

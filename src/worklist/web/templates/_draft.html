@@ -1,0 +1,29 @@
+{% if draft %}
+<div class="card" id="draft">
+  <h2 style="margin-top:0">Suggested outreach
+    {% if draft.generator == "template" %}<span class="pill band-none">Template</span>{% else %}<span class="pill new">Drafted by {{ draft.llm_model }}</span>{% endif %}
+    <span class="pill band-none">{{ draft.status }}</span></h2>
+  {% if draft.generator == "template" %}<p class="meta">Template used because: {{ draft.fallback_reason }}</p>{% endif %}
+  <p class="meta">Built only from the evidence above (highlighted facts: {{ draft.facts_used | join(", ") }}). Nothing is sent by this system.</p>
+  <h3>For you</h3>
+  <p>{{ draft.internal_summary }}</p>
+  <h3>Email to the customer</h3>
+  {% if draft.status == "approved" %}
+    <p class="meta">Approved by {{ draft.approver }} at {{ draft.approved_at | dt }}.</p>
+    <p><strong>Subject:</strong> {{ draft.email_subject }}</p>
+    <pre id="final-text" style="white-space:pre-wrap;background:#fafafa;border:1px solid var(--line);padding:10px">{{ draft.final_text }}</pre>
+    <button onclick="navigator.clipboard.writeText(document.getElementById('final-text').innerText)">Copy</button>
+    <a class="btn" href="mailto:?subject={{ draft.email_subject | urlencode }}&body={{ draft.final_text | urlencode }}">Open in mail client</a>
+  {% elif draft.status == "discarded" %}
+    <p class="meta">Discarded.</p>
+  {% else %}
+    <p><strong>Subject:</strong> {{ draft.email_subject }}</p>
+    <form method="post" action="/drafts/{{ draft.id }}/approve">
+      <input type="hidden" name="csrf_token" value="{{ user.csrf_token }}">
+      <textarea name="final_text" rows="12">{{ draft.email_body }}</textarea>
+      <p><button class="primary">Approve text</button> <span class="meta">Records your approval and the final text; you then copy it or open it in your mail client.</span></p>
+    </form>
+    <form method="post" action="/drafts/{{ draft.id }}/discard"><input type="hidden" name="csrf_token" value="{{ user.csrf_token }}"><button>Discard</button></form>
+  {% endif %}
+</div>
+{% endif %}

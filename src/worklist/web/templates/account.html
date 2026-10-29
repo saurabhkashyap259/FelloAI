@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ account.name }}{% endblock %}
+{% block content %}
+<p class="meta"><a href="/">← Worklist</a></p>
+<h1>{{ account.name }}</h1>
+<p class="meta">Owner: {{ owner or "Unassigned" }} · {{ account.contract_type }} contract · segment {{ account.segment or "—" }} · status {{ account.status | replace("_", " ") }}</p>
+<div class="grid2">
+  <div class="card">
+    <h2 style="margin-top:0">Facts</h2>
+    <table>
+      <tr><td>Contract value (ARR)</td><td class="num">{{ account.arr | money }} <span class="meta">billing</span></td></tr>
+      <tr><td>Next renewal</td><td class="num">{{ account.renewal_date or "—" }} <span class="meta">billing</span></td></tr>
+      <tr><td>Domain</td><td class="num">{{ account.primary_domain or "—" }}</td></tr>
+    </table>
+    {% if conflicts %}
+    <h3>Source conflicts</h3>
+    <table><tr><th>Fact</th><th>Chosen</th><th>Other</th></tr>
+    {% for c in conflicts %}<tr><td>{{ c.fact | replace("_", " ") }}</td><td>{{ c.chosen_value }} <span class="meta">({{ c.chosen_source }})</span></td><td>{{ c.other_value }} <span class="meta">({{ c.other_source }})</span></td></tr>{% endfor %}
+    </table>{% endif %}
+  </div>
+  <div class="card">
+    <h2 style="margin-top:0">{% if historical %}Score as originally computed{% else %}Current score{% endif %}</h2>
+    {% if score %}
+    <p style="font-size:28px;margin:4px 0"><strong>{{ score.probability | pct }}</strong>
+      {% if score.band %}<span class="pill band-{{ score.band }}">{{ score.band }}</span>{% else %}<span class="pill band-none">{{ score.state | replace("_", " ") }}</span>{% endif %}
+      <span class="meta">confidence {{ score.confidence | replace("_", " ") }}{% if score.rank_in_owner %} · #{{ score.rank_in_owner }} in owner's book{% endif %}</span></p>
+    <table class="meta">
+      <tr><td>Scoring run</td><td><code>{{ score.run_id }}</code> ({{ score.run_type }})</td></tr>
+      <tr><td>Computed</td><td>{{ score.run_finished_at | dt }}</td></tr>
+      <tr><td>Data cutoff</td><td>{{ score.cutoff_at | dt }}</td></tr>
+      <tr><td>Model version</td><td><code>{{ score.model_version_id or "none" }}</code>{% if score.algorithm %} {{ score.algorithm }}, {{ score.history_window }}{% endif %}</td></tr>
+      <tr><td>Signal definitions</td><td><code>{{ score.signal_defs_version }}</code></td></tr>
+      <tr><td>Score record</td><td><a href="/api/accounts/{{ account.id }}/scores/{{ score.id }}"><code>{{ score.id }}</code></a></td></tr>
+      {% if snapshot and snapshot.missing_sources %}<tr><td>No data (180 days)</td><td>{{ snapshot.missing_sources | join(", ") }}</td></tr>{% endif %}
+    </table>
+    {% else %}<p class="meta">Not scored yet.</p>{% endif %}
+  </div>
+</div>
+{% if chart %}<div class="card"><h2 style="margin-top:0">Risk history</h2>{{ chart | safe }}</div>{% endif %}
+{% if score and score.contributions %}
+<div class="card">
+  <h2 style="margin-top:0">What drove this score</h2>
+  <p class="meta">Each signal's value at the cutoff and how much it pushed the risk up (+) or down (−), in log-odds. Click a signal to see the source records.</p>
+  <div class="scroll"><table>
+    <tr><th>Signal</th><th>Definition</th><th class="num">Value</th><th class="num">Effect</th></tr>
+    {% for c in score.contributions %}{% set sig = signals[c.signal] %}
+    <tr><td><a href="/accounts/{{ account.id }}/signals/{{ c.signal }}?score_id={{ score.id }}">{{ c.signal }}</a></td>
+      <td class="meta">{{ sig.label }}</td><td class="num">{{ fmt(sig, c.value) }}</td>
+      <td class="num" style="color:{{ '#b42318' if c.contribution > 0 else '#2f6f3e' }}">{{ "%+.3f" % c.contribution }}</td></tr>
+    {% endfor %}
+  </table></div>
+</div>
+{% elif snapshot %}
+<div class="card"><h2 style="margin-top:0">Signals at the cutoff</h2><table>
+  {% for name, value in snapshot.signals.items() %}<tr><td><a href="/accounts/{{ account.id }}/signals/{{ name }}?score_id={{ score.id }}">{{ name }}</a></td><td class="num">{{ fmt(signals[name], value) }}</td></tr>{% endfor %}
+</table></div>
+{% endif %}
+<div class="grid2">
+  <div class="card"><h2 style="margin-top:0">Actions</h2>
+    {% if actions %}<ul>{% for a in actions %}<li>{{ a.action | replace("_", " ") }}{% if a.snooze_until %} until {{ a.snooze_until }}{% endif %}{% if a.reason %}: “{{ a.reason }}”{% endif %} <span class="meta">by {{ a.display_name }}, {{ a.created_at | dt }}</span></li>{% endfor %}</ul>
+    {% else %}<p class="meta">No actions recorded.</p>{% endif %}</div>
+  <div class="card"><h2 style="margin-top:0">Alerts and drafts</h2>
+    {% if alerts %}<ul>{% for al in alerts %}<li><a href="/alerts/{{ al.id }}">{{ al.trigger | replace("_", " ") }}</a> <span class="meta">{{ al.created_at | dt }} · {{ al.status }}{% if al.draft_id %} · draft {{ al.draft_status }}{% endif %}</span></li>{% endfor %}</ul>
+    {% else %}<p class="meta">No alerts.</p>{% endif %}</div>
+</div>
+{% if history %}
+<details class="card"><summary>All past scores ({{ history | length }})</summary>
+  <table>{% for h in history | reverse %}<tr><td><a href="/accounts/{{ account.id }}/scores/{{ h.id }}">{{ h.cutoff_at | dt }}</a></td><td>{{ h.run_type }}</td><td class="num">{{ h.probability | pct }}</td><td>{{ h.band or h.state }}</td></tr>{% endfor %}</table>
+</details>
+{% endif %}
+{% endblock %}

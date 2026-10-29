@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Runs{% endblock %}
+{% block content %}
+<h1>Pipeline runs</h1>
+{% if needs_attention %}<div class="banner">This organisation missed more than 3 nightly cutoffs in a row; processing resumed at the latest cutoff. An operator should review the gap.</div>{% endif %}
+<div class="scroll"><table>
+  <tr><th>Cutoff</th><th>Type</th><th>Status</th><th class="num">Ingested</th><th class="num">Duplicates</th><th class="num">Quarantined (aged)</th><th>Stale sources</th><th class="num">Scored</th><th class="num">Alerts (suppressed)</th><th class="num">Drafts</th><th>Notes</th></tr>
+  {% for r in runs %}{% set c = r.counts %}
+  <tr><td>{{ r.cutoff_at | dt }}</td><td>{{ r.run_type }}{% if r.is_catch_up %} <span class="pill band-medium">catch-up</span>{% endif %}</td>
+    <td>{{ r.status }}</td><td class="num">{{ c.ingested or 0 }}</td><td class="num">{{ c.duplicates or 0 }}</td>
+    <td class="num">{{ c.quarantined or 0 }} ({{ c.quarantine_aged or 0 }})</td><td>{{ (c.stale_sources or []) | join(", ") or "—" }}</td>
+    <td class="num">{{ c.scored or "—" }}</td><td class="num">{{ c.alerts_raised or 0 }} ({{ c.alerts_suppressed or 0 }})</td><td class="num">{{ c.drafts_created or 0 }}</td>
+    <td class="meta">{{ r.error or c.decision or "" }}</td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}
