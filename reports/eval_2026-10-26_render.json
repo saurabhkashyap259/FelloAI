@@ -1,0 +1,5758 @@
+{
+  "as_of": "2026-10-26",
+  "windows": {
+    "as_of": "2026-10-26",
+    "label_end": "2026-07-28",
+    "test_start": "2026-01-27",
+    "valid_start": "2025-09-29",
+    "first_cutoff": "2024-03-25"
+  },
+  "signal_defs_version": "sd-6bf2f5f16e8d",
+  "decision": "promoted: passes gate; hit 0.829 vs 0.824, PR-AUC 0.445 vs 0.450, Brier 0.0631 vs 0.0628 (logistic baseline)",
+  "chosen": "lightgbm/full",
+  "promoted": true,
+  "gate_reference": "logistic baseline",
+  "history_window_comparison": {
+    "full": {
+      "top10_hit_rate": 0.8291,
+      "hit_rate_60d": 0.2613,
+      "pr_auc": 0.4446,
+      "brier": 0.0631
+    },
+    "recent_18m": {
+      "top10_hit_rate": 0.8191,
+      "hit_rate_60d": 0.2412,
+      "pr_auc": 0.4487,
+      "brier": 0.0627
+    }
+  },
+  "tenant_models": {
+    "Bluefin Health": "promoted: passes gate; hit 0.791 vs 0.791, PR-AUC 0.419 vs 0.394, Brier 0.0541 vs 0.0550 (pooled model on this tenant)",
+    "Copperleaf Logistics": "rejected: worse on top-10 hit rate, PR-AUC, Brier by more than 0.01; hit 0.594 vs 0.875, PR-AUC 0.247 vs 0.502, Brier 0.0767 vs 0.0585 (pooled model on this tenant)",
+    "Driftwood Studio": "not trained: below 1,000 examples / 50 churns",
+    "Northwind Analytics": "rejected: worse on top-10 hit rate, PR-AUC by more than 0.01; hit 0.810 vs 0.828, PR-AUC 0.413 vs 0.427, Brier 0.0692 vs 0.0683 (pooled model on this tenant)"
+  },
+  "tenant_names": {
+    "01a19693-ecb9-7c94-87e3-79e78098663a": "Bluefin Health",
+    "01a19693-fa7e-7454-b5c2-e6caf6664e96": "Copperleaf Logistics",
+    "01a19694-044c-7178-a1dd-4a5a37382cd9": "Driftwood Studio",
+    "01a19693-d5c6-7879-8faf-6d0e642013c1": "Northwind Analytics"
+  },
+  "candidates": {
+    "logreg_baseline/full": {
+      "overall": {
+        "examples": 28103,
+        "positive_examples": 2528,
+        "churned_accounts": 199,
+        "pr_auc": 0.4495,
+        "roc_auc": 0.7609,
+        "brier": 0.0628,
+        "top10_hit_rate": 0.8241,
+        "hit_rate_60d": 0.3065,
+        "median_lead_days": 42.0,
+        "high_band_churn_rate": 0.4857,
+        "base_churn_rate": 0.09,
+        "high_band_lift": 5.4,
+        "calibration_bins": [
+          {
+            "n": 2811,
+            "mean_predicted": 0.0027,
+            "observed_rate": 0.0363
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0146,
+            "observed_rate": 0.0342
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0186,
+            "observed_rate": 0.0384
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0238,
+            "observed_rate": 0.0317
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0288,
+            "observed_rate": 0.0367
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.038,
+            "observed_rate": 0.0705
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0513,
+            "observed_rate": 0.0719
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0657,
+            "observed_rate": 0.0737
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.077,
+            "observed_rate": 0.1206
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.3664,
+            "observed_rate": 0.3858
+          }
+        ],
+        "calibration_max_gap": 0.0436,
+        "silent_churn": {
+          "count": 39,
+          "recall_30d": 0.7692,
+          "lead_days": [
+            90,
+            8,
+            32,
+            36,
+            56,
+            10,
+            39,
+            null,
+            40,
+            86,
+            54,
+            74,
+            null,
+            16,
+            54,
+            78,
+            42,
+            47,
+            90,
+            null,
+            null,
+            24,
+            83,
+            58,
+            70,
+            86,
+            88,
+            33,
+            42,
+            63,
+            54,
+            74,
+            86,
+            41,
+            61,
+            83,
+            73,
+            53,
+            null
+          ]
+        }
+      },
+      "per_tenant": {
+        "01a19693-d5c6-7879-8faf-6d0e642013c1": {
+          "examples": 15468,
+          "positive_examples": 1473,
+          "churned_accounts": 116,
+          "pr_auc": 0.4399,
+          "roc_auc": 0.7633,
+          "brier": 0.0677,
+          "top10_hit_rate": 0.8103,
+          "hit_rate_60d": 0.2586,
+          "median_lead_days": 38.0,
+          "high_band_churn_rate": 0.5497,
+          "base_churn_rate": 0.0952,
+          "high_band_lift": 5.77,
+          "calibration_bins": [
+            {
+              "n": 1547,
+              "mean_predicted": 0.0015,
+              "observed_rate": 0.0356
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.011,
+              "observed_rate": 0.033
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0162,
+              "observed_rate": 0.0465
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0186,
+              "observed_rate": 0.0323
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0224,
+              "observed_rate": 0.0446
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0359,
+              "observed_rate": 0.0601
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0466,
+              "observed_rate": 0.0672
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0602,
+              "observed_rate": 0.1028
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.0704,
+              "observed_rate": 0.13
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.3201,
+              "observed_rate": 0.4004
+            }
+          ],
+          "calibration_max_gap": 0.0803,
+          "silent_churn": {
+            "count": 23,
+            "recall_30d": 0.6522,
+            "lead_days": [
+              90,
+              8,
+              32,
+              36,
+              56,
+              10,
+              39,
+              null,
+              40,
+              86,
+              54,
+              74,
+              null,
+              16,
+              54,
+              78,
+              42,
+              47,
+              90,
+              null,
+              null,
+              24,
+              83
+            ]
+          }
+        },
+        "01a19693-ecb9-7c94-87e3-79e78098663a": {
+          "examples": 7046,
+          "positive_examples": 545,
+          "churned_accounts": 43,
+          "pr_auc": 0.4408,
+          "roc_auc": 0.7801,
+          "brier": 0.0531,
+          "top10_hit_rate": 0.8372,
+          "hit_rate_60d": 0.3953,
+          "median_lead_days": 56.0,
+          "high_band_churn_rate": 0.4048,
+          "base_churn_rate": 0.0773,
+          "high_band_lift": 5.23,
+          "calibration_bins": [
+            {
+              "n": 705,
+              "mean_predicted": 0.0245,
+              "observed_rate": 0.0298
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0282,
+              "observed_rate": 0.0227
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0282,
+              "observed_rate": 0.0369
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0294,
+              "observed_rate": 0.0227
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0436,
+              "observed_rate": 0.027
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0659,
+              "observed_rate": 0.034
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0728,
+              "observed_rate": 0.0639
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0759,
+              "observed_rate": 0.0824
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0772,
+              "observed_rate": 0.0838
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.3582,
+              "observed_rate": 0.3707
+            }
+          ],
+          "calibration_max_gap": 0.0319,
+          "silent_churn": {
+            "count": 10,
+            "recall_30d": 1.0,
+            "lead_days": [
+              58,
+              70,
+              86,
+              88,
+              33,
+              42,
+              63,
+              54,
+              74,
+              86
+            ]
+          }
+        },
+        "01a19693-fa7e-7454-b5c2-e6caf6664e96": {
+          "examples": 4457,
+          "positive_examples": 407,
+          "churned_accounts": 32,
+          "pr_auc": 0.4754,
+          "roc_auc": 0.7989,
+          "brier": 0.0607,
+          "top10_hit_rate": 0.8438,
+          "hit_rate_60d": 0.4062,
+          "median_lead_days": 57.0,
+          "high_band_churn_rate": 0.4384,
+          "base_churn_rate": 0.0913,
+          "high_band_lift": 4.8,
+          "calibration_bins": [
+            {
+              "n": 446,
+              "mean_predicted": 0.0186,
+              "observed_rate": 0.0112
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0186,
+              "observed_rate": 0.0538
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0186,
+              "observed_rate": 0.0291
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0187,
+              "observed_rate": 0.0157
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0279,
+              "observed_rate": 0.0291
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.03,
+              "observed_rate": 0.0516
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0394,
+              "observed_rate": 0.0852
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.0701,
+              "observed_rate": 0.0719
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.1331,
+              "observed_rate": 0.1326
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.4848,
+              "observed_rate": 0.4337
+            }
+          ],
+          "calibration_max_gap": 0.0511,
+          "silent_churn": {
+            "count": 4,
+            "recall_30d": 1.0,
+            "lead_days": [
+              41,
+              61,
+              83,
+              73
+            ]
+          }
+        },
+        "01a19694-044c-7178-a1dd-4a5a37382cd9": {
+          "examples": 1132,
+          "positive_examples": 103,
+          "churned_accounts": 8,
+          "pr_auc": 0.3906,
+          "roc_auc": 0.7358,
+          "brier": 0.0638,
+          "top10_hit_rate": 0.875,
+          "hit_rate_60d": 0.125,
+          "median_lead_days": 24.0,
+          "high_band_churn_rate": 0.9118,
+          "base_churn_rate": 0.091,
+          "high_band_lift": 10.02,
+          "calibration_bins": [
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0614
+            },
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0439
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0619
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0885
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.034,
+              "observed_rate": 0.0885
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0399,
+              "observed_rate": 0.1239
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0399,
+              "observed_rate": 0.1327
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.3133,
+              "observed_rate": 0.3097
+            }
+          ],
+          "calibration_max_gap": 0.0928,
+          "silent_churn": {
+            "count": 2,
+            "recall_30d": 0.5,
+            "lead_days": [
+              53,
+              null
+            ]
+          }
+        }
+      },
+      "driver_recovery": {
+        "top10_signals": [
+          "active_user_ratio",
+          "days_to_renewal",
+          "tickets_90d",
+          "high_urgent_tickets_90d",
+          "csm_emails_90d",
+          "cancel_at_period_end",
+          "opp_at_risk_90d",
+          "tickets_30d",
+          "is_monthly",
+          "bad_csat_90d"
+        ],
+        "drivers": {
+          "usage_decline": true,
+          "seat_underutilisation": true,
+          "ticket_spike_slow_resolution": true,
+          "payment_failures": false,
+          "champion_departure": false,
+          "no_csm_contact": true
+        },
+        "recovered_count": 4,
+        "mean_abs_contribution": {
+          "active_user_ratio": 0.2477,
+          "days_to_renewal": 0.2415,
+          "tickets_90d": 0.2278,
+          "high_urgent_tickets_90d": 0.2001,
+          "csm_emails_90d": 0.185,
+          "cancel_at_period_end": 0.1638,
+          "opp_at_risk_90d": 0.1598,
+          "tickets_30d": 0.1592,
+          "is_monthly": 0.1282,
+          "bad_csat_90d": 0.115,
+          "days_since_invoice_paid": 0.1027,
+          "payment_failures_90d": 0.0937,
+          "median_resolution_days_90d": 0.0921,
+          "seat_utilisation": 0.0807,
+          "high_urgent_tickets_30d": 0.0789,
+          "sessions_per_user": 0.0775,
+          "sessions_trend_60d": 0.0665,
+          "champion_removed_90d": 0.0637,
+          "open_tickets": 0.0465,
+          "days_since_csm_email": 0.0369,
+          "net_contacts_change_90d": 0.0336,
+          "tenure_days": 0.0335,
+          "days_since_usage": 0.0233,
+          "usage_trend_60d": 0.014,
+          "customer_emails_90d": 0.0131,
+          "ticket_trend": 0.0087,
+          "log_arr": 0.0058,
+          "urgent_tickets_30d": 0.0035,
+          "bounces_90d": 0.0009,
+          "max_payment_attempt_90d": 0.0002
+        }
+      },
+      "success_criteria": {
+        "SC-001_hit_rate_60d_ge_0.70": false,
+        "SC-002_high_band_lift_ge_3": true,
+        "SC-004_calibration_gap_le_0.10": true,
+        "SC-012_silent_recall_30d_ge_0.70": true,
+        "SC-011_drivers_recovered_ge_5": false
+      },
+      "churner_leads": [
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-710c-a14a-6035aeed23f0",
+          "renewal_date": "2026-03-10",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-719f-a14f-f363c57c10d1",
+          "renewal_date": "2026-02-03",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7270-aac0-2f201a0f452d",
+          "renewal_date": "2026-07-23",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72ac-a443-e14337a5c360",
+          "renewal_date": "2026-06-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72e6-911a-84730c2cab90",
+          "renewal_date": "2026-04-05",
+          "lead_days": 55.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7301-88a7-1fbb790bd717",
+          "renewal_date": "2026-01-31",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7302-b8a4-8543fcc5ce27",
+          "renewal_date": "2026-02-09",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-751a-b57f-a9579c1a31bc",
+          "renewal_date": "2026-05-03",
+          "lead_days": 90.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7561-ba24-ec4d8e9bfede",
+          "renewal_date": "2026-06-05",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7696-8ef5-adb327bee6a2",
+          "renewal_date": "2026-07-03",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-769f-a600-010c71fef753",
+          "renewal_date": "2026-04-17",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ad-8055-fc7d9c24543f",
+          "renewal_date": "2026-05-26",
+          "lead_days": 8.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ce-a5a9-13a6f83a7da5",
+          "renewal_date": "2026-07-11",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7842-8514-f6dbe871f638",
+          "renewal_date": "2026-03-27",
+          "lead_days": 32.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7942-b6bb-cfbf48410ea8",
+          "renewal_date": "2026-04-20",
+          "lead_days": 49.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7976-b3ec-16709fe2251a",
+          "renewal_date": "2026-03-07",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7a09-9cdf-6b1cbb053186",
+          "renewal_date": "2026-05-19",
+          "lead_days": 36.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7af1-bde8-bff9f48cbed7",
+          "renewal_date": "2026-04-22",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7b11-958d-4b3f91098c6e",
+          "renewal_date": "2026-06-04",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7bbe-b07c-40cf8772aed7",
+          "renewal_date": "2026-02-08",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7c2a-a9a3-408da87b9071",
+          "renewal_date": "2026-05-04",
+          "lead_days": 56.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7cc8-99bd-4ca0245a3df5",
+          "renewal_date": "2026-02-19",
+          "lead_days": 10.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7e93-a222-8cb57e4e7542",
+          "renewal_date": "2026-04-14",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f10-aa71-b260c0fa50b9",
+          "renewal_date": "2026-03-19",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f67-9a5b-f80f13602cd5",
+          "renewal_date": "2026-07-13",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f83-a55d-7b6ff28a9c1c",
+          "renewal_date": "2026-04-21",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70e2-877d-c7ba73253172",
+          "renewal_date": "2026-02-20",
+          "lead_days": 39.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70f8-95b6-6a964283d4d8",
+          "renewal_date": "2026-04-01",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-726b-852c-93febf442585",
+          "renewal_date": "2026-03-12",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-72e6-b754-bef1137dfa76",
+          "renewal_date": "2026-07-07",
+          "lead_days": 15.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-73be-80fb-ecb3b21551eb",
+          "renewal_date": "2026-06-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-748e-bd3e-c8a7451a478e",
+          "renewal_date": "2026-07-04",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7494-9d5f-f2889f6208a0",
+          "renewal_date": "2026-07-04",
+          "lead_days": 40.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c2-82b7-2f390c03fba2",
+          "renewal_date": "2026-07-12",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c8-83bd-bdad97558705",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-750a-b606-8009dbc6010c",
+          "renewal_date": "2026-02-25",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7515-9c65-09a1f7660ddc",
+          "renewal_date": "2026-04-11",
+          "lead_days": 12.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-75d7-88a0-4305f75318a9",
+          "renewal_date": "2026-05-12",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7635-98d7-d72185b3212d",
+          "renewal_date": "2026-04-28",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76e7-9976-bf6779c11f39",
+          "renewal_date": "2026-02-20",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76f2-a57f-cf08d30a4e78",
+          "renewal_date": "2026-02-11",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-78bc-9987-7287beaa00e4",
+          "renewal_date": "2026-07-11",
+          "lead_days": 68.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-79e7-b0ad-a54c119b8226",
+          "renewal_date": "2026-06-06",
+          "lead_days": 33.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b1d-bb94-fbc4fa5ca12c",
+          "renewal_date": "2026-03-07",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b91-ae3e-9b2ae7116763",
+          "renewal_date": "2026-07-24",
+          "lead_days": 32.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7d0a-af78-8c44bb76c0a3",
+          "renewal_date": "2026-06-15",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7dc5-8201-9ec1098f2c93",
+          "renewal_date": "2026-02-06",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7def-91d2-3415de347bff",
+          "renewal_date": "2026-06-11",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7e2b-8c25-26e735c41fa7",
+          "renewal_date": "2026-02-23",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-708d-8052-cec45f164680",
+          "renewal_date": "2026-07-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7189-88b9-ef6000f94466",
+          "renewal_date": "2026-07-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-71d5-ad22-7f77a2d680c1",
+          "renewal_date": "2026-07-25",
+          "lead_days": 19.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7273-b1d6-9e8b101f524a",
+          "renewal_date": "2026-03-04",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7287-8fe0-79b43d473397",
+          "renewal_date": "2026-06-17",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-72f8-a0a3-9ba4658cec01",
+          "renewal_date": "2026-04-15",
+          "lead_days": 16.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-730a-bacb-529ee00f2b5b",
+          "renewal_date": "2026-01-29",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7391-9379-9a0b2e0f425c",
+          "renewal_date": "2026-06-22",
+          "lead_days": 7.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7431-a62a-d61f2ed88dab",
+          "renewal_date": "2026-04-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7477-9cb9-824d7f34d349",
+          "renewal_date": "2026-06-17",
+          "lead_days": 9.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-76cf-988b-b4ebce7541ca",
+          "renewal_date": "2026-07-17",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-774e-a4f8-c55efbcdfe26",
+          "renewal_date": "2026-05-09",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7821-9c0f-09d21233cad5",
+          "renewal_date": "2026-01-29",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78af-9f29-98c66d87c674",
+          "renewal_date": "2026-01-30",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78ec-a424-f193be49fdcf",
+          "renewal_date": "2026-07-12",
+          "lead_days": 34.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7967-847d-d85e91967f97",
+          "renewal_date": "2026-07-07",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-79f5-98ae-b175db38d173",
+          "renewal_date": "2026-02-03",
+          "lead_days": 29.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7a9c-8338-5950159650cb",
+          "renewal_date": "2026-02-02",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7b57-9177-1f10f9c19273",
+          "renewal_date": "2026-07-28",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c51-959d-fd4d9dd59aba",
+          "renewal_date": "2026-05-25",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c6d-9019-63969f34ce7c",
+          "renewal_date": "2026-04-10",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d0b-ab03-3a806dbba294",
+          "renewal_date": "2026-04-24",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d2c-ba63-576ecc66fa54",
+          "renewal_date": "2026-07-18",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7e05-8b87-83a535fc2a47",
+          "renewal_date": "2026-02-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f0a-852b-b5b34502e22e",
+          "renewal_date": "2026-07-01",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f57-8bba-fb48e942e88c",
+          "renewal_date": "2026-04-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fb3-a851-7140735fd24c",
+          "renewal_date": "2026-03-14",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fe0-b651-f434c6ea8efd",
+          "renewal_date": "2026-06-25",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7004-80d7-1f6fdc7f3344",
+          "renewal_date": "2026-06-02",
+          "lead_days": 78.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-710c-93ea-dc7514c36b99",
+          "renewal_date": "2026-04-13",
+          "lead_days": 77.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7129-b8b7-f30770c21ac8",
+          "renewal_date": "2026-05-28",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7324-8099-5f63941b5adf",
+          "renewal_date": "2026-07-12",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-74d8-85c1-dfbc2bcac7da",
+          "renewal_date": "2026-04-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-759c-a93a-e3f5f8b1a0aa",
+          "renewal_date": "2026-02-23",
+          "lead_days": 14.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-77ed-a283-a6ebb20d2feb",
+          "renewal_date": "2026-04-27",
+          "lead_days": 42.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7866-ad34-4e22700f61a8",
+          "renewal_date": "2026-03-18",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7884-8645-1d6eb9e2d520",
+          "renewal_date": "2026-05-15",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7964-9e06-fc0c2723d1c1",
+          "renewal_date": "2026-06-04",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7a9a-b50a-76f538303e15",
+          "renewal_date": "2026-02-05",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c03-866b-5eb7b133daca",
+          "renewal_date": "2026-01-30",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a568-02da64f097f8",
+          "renewal_date": "2026-02-22",
+          "lead_days": 62.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a7dc-2ac27d553e17",
+          "renewal_date": "2026-06-20",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7d65-9488-5bb186d7c469",
+          "renewal_date": "2026-03-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7e7c-b8f8-dabd2fef02c7",
+          "renewal_date": "2026-05-21",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f34-8a84-194f9c3e1acf",
+          "renewal_date": "2026-07-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f6a-9b7d-23e7fd960746",
+          "renewal_date": "2026-03-21",
+          "lead_days": 47.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f95-8439-69895fdaa3c9",
+          "renewal_date": "2026-04-19",
+          "lead_days": 90.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7fce-9b8b-8db0013b7600",
+          "renewal_date": "2026-02-28",
+          "lead_days": 54.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7093-a08c-b4232633f0a2",
+          "renewal_date": "2026-03-30",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7098-8488-ad0666116643",
+          "renewal_date": "2026-03-18",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-709e-be3c-ff8caf74dcb7",
+          "renewal_date": "2026-07-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-713f-9fb0-2d842ef37d47",
+          "renewal_date": "2026-06-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-718f-8e5b-02565ea7e740",
+          "renewal_date": "2026-04-24",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-724f-bd8f-9d56e13ba19a",
+          "renewal_date": "2026-04-06",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-72b0-9900-1e4f459b3532",
+          "renewal_date": "2026-04-16",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-74a4-8ebc-d2b9d3aab402",
+          "renewal_date": "2026-04-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-75b0-b2ff-f5b000f7c0ae",
+          "renewal_date": "2026-05-29",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-76e7-85ad-e7c7e715d96f",
+          "renewal_date": "2026-02-19",
+          "lead_days": 24.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7806-ade7-d535826f4174",
+          "renewal_date": "2026-01-29",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-78c2-968c-3fa1d83697e5",
+          "renewal_date": "2026-06-12",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7b52-b22f-03e402859158",
+          "renewal_date": "2026-07-05",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba6-a984-be6f14030bb4",
+          "renewal_date": "2026-04-19",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba7-bc0f-c15c8ed16645",
+          "renewal_date": "2026-05-10",
+          "lead_days": 83.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7bd9-82a0-be112cb70563",
+          "renewal_date": "2026-03-24",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ce2-8b2f-004f81d9e38e",
+          "renewal_date": "2026-06-19",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7f22-a77a-96dc394c40da",
+          "renewal_date": "2026-06-26",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7fd0-8ef2-42aac76b231a",
+          "renewal_date": "2026-03-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-71b0-9da0-06bfff9423e1",
+          "renewal_date": "2026-07-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7252-88bb-4f90d55e61d9",
+          "renewal_date": "2026-02-21",
+          "lead_days": 75.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7491-9d9b-f1bf93014133",
+          "renewal_date": "2026-06-06",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7bf6-ba56-9cd93c532cc4",
+          "renewal_date": "2026-06-28",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7d1d-8ee3-01091c08e043",
+          "renewal_date": "2026-06-10",
+          "lead_days": 58.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7e94-9bdc-98bb95c8616d",
+          "renewal_date": "2026-05-18",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7115-bee3-cef6e8deac84",
+          "renewal_date": "2026-03-19",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7122-b99f-0c9681a79533",
+          "renewal_date": "2026-03-10",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7196-9a6b-3a016dd5daec",
+          "renewal_date": "2026-03-18",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7400-8e45-5bf98ffb66cd",
+          "renewal_date": "2026-04-27",
+          "lead_days": 70.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-74e1-852a-5726eedd6439",
+          "renewal_date": "2026-05-09",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7519-a152-b2b798e338c3",
+          "renewal_date": "2026-04-01",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7531-b217-bd455e593e19",
+          "renewal_date": "2026-04-01",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-76c6-ae56-cd92ecd884b5",
+          "renewal_date": "2026-06-07",
+          "lead_days": 6.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-77d2-bba8-9c096fb3da44",
+          "renewal_date": "2026-07-15",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7895-be2a-b02c8818963c",
+          "renewal_date": "2026-05-13",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-797b-a116-b2a38cd391b2",
+          "renewal_date": "2026-03-17",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79d6-b0a2-a3be5dbe471c",
+          "renewal_date": "2026-04-03",
+          "lead_days": 88.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79db-9460-20c92aa34e03",
+          "renewal_date": "2026-05-27",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d02-b807-7079704cc925",
+          "renewal_date": "2026-03-30",
+          "lead_days": 63.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d8b-a447-a204126abf90",
+          "renewal_date": "2026-03-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7db9-91a9-5202ec62bd06",
+          "renewal_date": "2026-05-16",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-717b-abea-f29ab7139511",
+          "renewal_date": "2026-06-01",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-72a5-8059-9aeeb7713133",
+          "renewal_date": "2026-03-09",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7430-9dbb-3d1fac87308a",
+          "renewal_date": "2026-04-19",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-74a6-a4be-c421f9a01b46",
+          "renewal_date": "2026-02-07",
+          "lead_days": 33.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7567-a22f-5eecae19f3d5",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-75b8-b163-f1204eb0a0fc",
+          "renewal_date": "2026-05-25",
+          "lead_days": 42.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7795-94f1-f1adb06dc770",
+          "renewal_date": "2026-06-30",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-784a-962c-fc8782a8f64c",
+          "renewal_date": "2026-02-09",
+          "lead_days": 63.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ad0-a983-51275416077e",
+          "renewal_date": "2026-05-29",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ade-852c-20c105f6d0a7",
+          "renewal_date": "2026-05-19",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7bab-9a0a-f2941f01937c",
+          "renewal_date": "2026-04-07",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7c67-8b25-1bfdef0ebcae",
+          "renewal_date": "2026-06-01",
+          "lead_days": 70.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7f11-b47e-18f59f6b0b2c",
+          "renewal_date": "2026-06-13",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7fd7-8f7b-80bf0c331e94",
+          "renewal_date": "2026-04-22",
+          "lead_days": 44.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-71ac-b1da-a9004fb131c4",
+          "renewal_date": "2026-04-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-731c-8772-3dc46a7149a0",
+          "renewal_date": "2026-04-20",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-74f1-a88b-3c807540b919",
+          "renewal_date": "2026-06-09",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c04-a2e2-9b118ec98410",
+          "renewal_date": "2026-07-06",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c1b-9bea-9edad89c92a7",
+          "renewal_date": "2026-05-08",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7d5d-bb55-5b4c9285d53f",
+          "renewal_date": "2026-03-15",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7f93-86f3-5624702cf097",
+          "renewal_date": "2026-03-04",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7019-bd9f-d798bb7a482a",
+          "renewal_date": "2026-01-29",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-751d-bede-7a89604b1bad",
+          "renewal_date": "2026-07-05",
+          "lead_days": 41.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-79d8-91f2-e3096198b59f",
+          "renewal_date": "2026-04-11",
+          "lead_days": 61.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7d92-b2df-6c196a11f111",
+          "renewal_date": "2026-06-19",
+          "lead_days": 53.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7f6e-88ec-b43de996f46d",
+          "renewal_date": "2026-07-23",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7fba-9ef0-5e3cdb842fc0",
+          "renewal_date": "2026-07-03",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7068-b90e-2026753b1637",
+          "renewal_date": "2026-07-19",
+          "lead_days": 13.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70b6-abce-69d78ad1d4d0",
+          "renewal_date": "2026-04-19",
+          "lead_days": 83.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70ff-911e-95121e83031d",
+          "renewal_date": "2026-03-19",
+          "lead_days": 73.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-711b-8930-70e181560343",
+          "renewal_date": "2026-04-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71d8-bcd9-3ab9f70116ef",
+          "renewal_date": "2026-03-15",
+          "lead_days": 27.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71f4-8280-6f03975f81a0",
+          "renewal_date": "2026-05-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72e2-b960-426c8e6075d2",
+          "renewal_date": "2026-05-31",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72f4-a90a-8cedf030bc85",
+          "renewal_date": "2026-02-02",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7438-b027-f9b2bbf8e224",
+          "renewal_date": "2026-05-30",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7497-b011-73aecbb58dc7",
+          "renewal_date": "2026-03-18",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7614-a848-95504ec75ead",
+          "renewal_date": "2026-03-06",
+          "lead_days": 46.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-763a-aa5f-37ab93b040a1",
+          "renewal_date": "2026-06-16",
+          "lead_days": 64.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-773e-9cc5-0e361243c1ae",
+          "renewal_date": "2026-04-30",
+          "lead_days": 73.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7811-924c-a498fbdabcce",
+          "renewal_date": "2026-03-31",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7a6d-9a5d-9e0a4c9a94e4",
+          "renewal_date": "2026-02-16",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7b22-899f-37a15b308b2c",
+          "renewal_date": "2026-07-17",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c88-926e-fc60f71dd1d5",
+          "renewal_date": "2026-06-30",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c9b-9979-b7ad5d37e18f",
+          "renewal_date": "2026-02-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7d45-ac73-4e13433ce84a",
+          "renewal_date": "2026-07-21",
+          "lead_days": 57.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7de2-858d-5b0504523b1c",
+          "renewal_date": "2026-02-19",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ebd-9938-d6afccf44ea9",
+          "renewal_date": "2026-05-10",
+          "lead_days": 48.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ed6-af10-6aa26f6e3135",
+          "renewal_date": "2026-05-22",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7209-8444-32e01c0a28c6",
+          "renewal_date": "2026-06-07",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-73d9-b54c-e3bc7ea9c8b7",
+          "renewal_date": "2026-03-20",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7441-a0e4-b5529d4b1e81",
+          "renewal_date": "2026-06-01",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-78da-9bd0-5ba0b8c3d79b",
+          "renewal_date": "2026-06-10",
+          "lead_days": 44.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7558-b467-ef5468ff6fa7",
+          "renewal_date": "2026-06-03",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7579-b227-be05691bc0b1",
+          "renewal_date": "2026-06-17",
+          "lead_days": 44.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-761a-b31d-01269dbff2dd",
+          "renewal_date": "2026-05-12",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-76b1-833a-1f9e5aa14722",
+          "renewal_date": "2026-04-02",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-78d2-863f-99f5553cad84",
+          "renewal_date": "2026-06-24",
+          "lead_days": 16.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7975-816c-304e0742880c",
+          "renewal_date": "2026-04-30",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7a39-892d-292546d68688",
+          "renewal_date": "2026-04-10",
+          "lead_days": 53.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7c41-8b15-1d1a885f249d",
+          "renewal_date": "2026-01-31",
+          "lead_days": NaN,
+          "silent": true
+        }
+      ],
+      "model_version_id": "01a196a2-8738-7ef9-b5e9-9fc9404b5c09"
+    },
+    "lightgbm/full": {
+      "overall": {
+        "examples": 28103,
+        "positive_examples": 2528,
+        "churned_accounts": 199,
+        "pr_auc": 0.4446,
+        "roc_auc": 0.777,
+        "brier": 0.0631,
+        "top10_hit_rate": 0.8291,
+        "hit_rate_60d": 0.2613,
+        "median_lead_days": 41.0,
+        "high_band_churn_rate": 0.4717,
+        "base_churn_rate": 0.09,
+        "high_band_lift": 5.24,
+        "calibration_bins": [
+          {
+            "n": 2811,
+            "mean_predicted": 0.0028,
+            "observed_rate": 0.026
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0116,
+            "observed_rate": 0.0317
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0151,
+            "observed_rate": 0.0352
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0233,
+            "observed_rate": 0.0377
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.034,
+            "observed_rate": 0.0395
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0375,
+            "observed_rate": 0.0413
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0463,
+            "observed_rate": 0.0726
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0643,
+            "observed_rate": 0.0858
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0907,
+            "observed_rate": 0.1516
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.3732,
+            "observed_rate": 0.3783
+          }
+        ],
+        "calibration_max_gap": 0.0609,
+        "silent_churn": {
+          "count": 39,
+          "recall_30d": 0.7179,
+          "lead_days": [
+            90,
+            50,
+            32,
+            50,
+            35,
+            10,
+            32,
+            30,
+            26,
+            null,
+            61,
+            46,
+            9,
+            9,
+            54,
+            1,
+            49,
+            null,
+            90,
+            88,
+            74,
+            24,
+            41,
+            51,
+            63,
+            86,
+            88,
+            null,
+            21,
+            63,
+            47,
+            74,
+            86,
+            55,
+            54,
+            48,
+            80,
+            74,
+            null
+          ]
+        }
+      },
+      "per_tenant": {
+        "01a19693-d5c6-7879-8faf-6d0e642013c1": {
+          "examples": 15468,
+          "positive_examples": 1473,
+          "churned_accounts": 116,
+          "pr_auc": 0.4275,
+          "roc_auc": 0.7761,
+          "brier": 0.0683,
+          "top10_hit_rate": 0.8276,
+          "hit_rate_60d": 0.1983,
+          "median_lead_days": 35.5,
+          "high_band_churn_rate": 0.538,
+          "base_churn_rate": 0.0952,
+          "high_band_lift": 5.65,
+          "calibration_bins": [
+            {
+              "n": 1547,
+              "mean_predicted": 0.0042,
+              "observed_rate": 0.0259
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0108,
+              "observed_rate": 0.0284
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0151,
+              "observed_rate": 0.0388
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0151,
+              "observed_rate": 0.0381
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0222,
+              "observed_rate": 0.0511
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0343,
+              "observed_rate": 0.0459
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0472,
+              "observed_rate": 0.0924
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0501,
+              "observed_rate": 0.0776
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.085,
+              "observed_rate": 0.1468
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.3235,
+              "observed_rate": 0.4075
+            }
+          ],
+          "calibration_max_gap": 0.084,
+          "silent_churn": {
+            "count": 23,
+            "recall_30d": 0.6522,
+            "lead_days": [
+              90,
+              50,
+              32,
+              50,
+              35,
+              10,
+              32,
+              30,
+              26,
+              null,
+              61,
+              46,
+              9,
+              9,
+              54,
+              1,
+              49,
+              null,
+              90,
+              88,
+              74,
+              24,
+              41
+            ]
+          }
+        },
+        "01a19693-ecb9-7c94-87e3-79e78098663a": {
+          "examples": 7046,
+          "positive_examples": 545,
+          "churned_accounts": 43,
+          "pr_auc": 0.394,
+          "roc_auc": 0.7881,
+          "brier": 0.055,
+          "top10_hit_rate": 0.7907,
+          "hit_rate_60d": 0.3256,
+          "median_lead_days": 44.5,
+          "high_band_churn_rate": 0.3644,
+          "base_churn_rate": 0.0773,
+          "high_band_lift": 4.71,
+          "calibration_bins": [
+            {
+              "n": 705,
+              "mean_predicted": 0.0177,
+              "observed_rate": 0.0142
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0259,
+              "observed_rate": 0.027
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0312,
+              "observed_rate": 0.0284
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0354,
+              "observed_rate": 0.0298
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0354,
+              "observed_rate": 0.0298
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0413,
+              "observed_rate": 0.0298
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0642,
+              "observed_rate": 0.0668
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0811,
+              "observed_rate": 0.1094
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.1182,
+              "observed_rate": 0.098
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.3927,
+              "observed_rate": 0.3409
+            }
+          ],
+          "calibration_max_gap": 0.0518,
+          "silent_churn": {
+            "count": 10,
+            "recall_30d": 0.8,
+            "lead_days": [
+              51,
+              63,
+              86,
+              88,
+              null,
+              21,
+              63,
+              47,
+              74,
+              86
+            ]
+          }
+        },
+        "01a19693-fa7e-7454-b5c2-e6caf6664e96": {
+          "examples": 4457,
+          "positive_examples": 407,
+          "churned_accounts": 32,
+          "pr_auc": 0.502,
+          "roc_auc": 0.8073,
+          "brier": 0.0585,
+          "top10_hit_rate": 0.875,
+          "hit_rate_60d": 0.4062,
+          "median_lead_days": 57.0,
+          "high_band_churn_rate": 0.4447,
+          "base_churn_rate": 0.0913,
+          "high_band_lift": 4.87,
+          "calibration_bins": [
+            {
+              "n": 446,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0157
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.008,
+              "observed_rate": 0.0224
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0202,
+              "observed_rate": 0.0336
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0388,
+              "observed_rate": 0.0471
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0388,
+              "observed_rate": 0.0516
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0388,
+              "observed_rate": 0.0404
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0413,
+              "observed_rate": 0.0493
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.0863,
+              "observed_rate": 0.0854
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.1054,
+              "observed_rate": 0.1146
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.4857,
+              "observed_rate": 0.4539
+            }
+          ],
+          "calibration_max_gap": 0.0318,
+          "silent_churn": {
+            "count": 4,
+            "recall_30d": 1.0,
+            "lead_days": [
+              55,
+              54,
+              48,
+              80
+            ]
+          }
+        },
+        "01a19694-044c-7178-a1dd-4a5a37382cd9": {
+          "examples": 1132,
+          "positive_examples": 103,
+          "churned_accounts": 8,
+          "pr_auc": 0.5111,
+          "roc_auc": 0.7653,
+          "brier": 0.0591,
+          "top10_hit_rate": 0.875,
+          "hit_rate_60d": 0.25,
+          "median_lead_days": 44.0,
+          "high_band_churn_rate": 0.9524,
+          "base_churn_rate": 0.091,
+          "high_band_lift": 10.47,
+          "calibration_bins": [
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0439
+            },
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0439
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0973
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0177
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0265
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0048,
+              "observed_rate": 0.0354
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0156,
+              "observed_rate": 0.0
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0407,
+              "observed_rate": 0.115
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0485,
+              "observed_rate": 0.115
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.2935,
+              "observed_rate": 0.4159
+            }
+          ],
+          "calibration_max_gap": 0.1224,
+          "silent_churn": {
+            "count": 2,
+            "recall_30d": 0.5,
+            "lead_days": [
+              74,
+              null
+            ]
+          }
+        }
+      },
+      "driver_recovery": {
+        "top10_signals": [
+          "days_to_renewal",
+          "usage_trend_60d",
+          "cancel_at_period_end",
+          "days_since_csm_email",
+          "sessions_per_user",
+          "active_user_ratio",
+          "median_resolution_days_90d",
+          "bad_csat_90d",
+          "payment_failures_90d",
+          "opp_at_risk_90d"
+        ],
+        "drivers": {
+          "usage_decline": true,
+          "seat_underutilisation": true,
+          "ticket_spike_slow_resolution": true,
+          "payment_failures": true,
+          "champion_departure": false,
+          "no_csm_contact": true
+        },
+        "recovered_count": 5,
+        "mean_abs_contribution": {
+          "days_to_renewal": 0.2045,
+          "usage_trend_60d": 0.1457,
+          "cancel_at_period_end": 0.1187,
+          "days_since_csm_email": 0.1158,
+          "sessions_per_user": 0.1147,
+          "active_user_ratio": 0.0995,
+          "median_resolution_days_90d": 0.0973,
+          "bad_csat_90d": 0.0889,
+          "payment_failures_90d": 0.07,
+          "opp_at_risk_90d": 0.0679,
+          "ticket_trend": 0.0636,
+          "seat_utilisation": 0.0612,
+          "days_since_invoice_paid": 0.0567,
+          "log_arr": 0.0563,
+          "champion_removed_90d": 0.0489,
+          "sessions_trend_60d": 0.0455,
+          "tenure_days": 0.0301,
+          "tickets_90d": 0.0233,
+          "max_payment_attempt_90d": 0.0218,
+          "high_urgent_tickets_90d": 0.0211,
+          "open_tickets": 0.0189,
+          "high_urgent_tickets_30d": 0.0152,
+          "csm_emails_90d": 0.0145,
+          "net_contacts_change_90d": 0.011,
+          "tickets_30d": 0.0094,
+          "days_since_usage": 0.0046,
+          "bounces_90d": 0.004,
+          "is_monthly": 0.0039,
+          "customer_emails_90d": 0.001,
+          "urgent_tickets_30d": 0.0
+        }
+      },
+      "success_criteria": {
+        "SC-001_hit_rate_60d_ge_0.70": false,
+        "SC-002_high_band_lift_ge_3": true,
+        "SC-004_calibration_gap_le_0.10": true,
+        "SC-012_silent_recall_30d_ge_0.70": true,
+        "SC-011_drivers_recovered_ge_5": true
+      },
+      "churner_leads": [
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-710c-a14a-6035aeed23f0",
+          "renewal_date": "2026-03-10",
+          "lead_days": 64.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-719f-a14f-f363c57c10d1",
+          "renewal_date": "2026-02-03",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7270-aac0-2f201a0f452d",
+          "renewal_date": "2026-07-23",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72ac-a443-e14337a5c360",
+          "renewal_date": "2026-06-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72e6-911a-84730c2cab90",
+          "renewal_date": "2026-04-05",
+          "lead_days": 55.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7301-88a7-1fbb790bd717",
+          "renewal_date": "2026-01-31",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7302-b8a4-8543fcc5ce27",
+          "renewal_date": "2026-02-09",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-751a-b57f-a9579c1a31bc",
+          "renewal_date": "2026-05-03",
+          "lead_days": 90.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7561-ba24-ec4d8e9bfede",
+          "renewal_date": "2026-06-05",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7696-8ef5-adb327bee6a2",
+          "renewal_date": "2026-07-03",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-769f-a600-010c71fef753",
+          "renewal_date": "2026-04-17",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ad-8055-fc7d9c24543f",
+          "renewal_date": "2026-05-26",
+          "lead_days": 50.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ce-a5a9-13a6f83a7da5",
+          "renewal_date": "2026-07-11",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7842-8514-f6dbe871f638",
+          "renewal_date": "2026-03-27",
+          "lead_days": 32.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7942-b6bb-cfbf48410ea8",
+          "renewal_date": "2026-04-20",
+          "lead_days": 49.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7976-b3ec-16709fe2251a",
+          "renewal_date": "2026-03-07",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7a09-9cdf-6b1cbb053186",
+          "renewal_date": "2026-05-19",
+          "lead_days": 50.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7af1-bde8-bff9f48cbed7",
+          "renewal_date": "2026-04-22",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7b11-958d-4b3f91098c6e",
+          "renewal_date": "2026-06-04",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7bbe-b07c-40cf8772aed7",
+          "renewal_date": "2026-02-08",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7c2a-a9a3-408da87b9071",
+          "renewal_date": "2026-05-04",
+          "lead_days": 35.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7cc8-99bd-4ca0245a3df5",
+          "renewal_date": "2026-02-19",
+          "lead_days": 10.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7e93-a222-8cb57e4e7542",
+          "renewal_date": "2026-04-14",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f10-aa71-b260c0fa50b9",
+          "renewal_date": "2026-03-19",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f67-9a5b-f80f13602cd5",
+          "renewal_date": "2026-07-13",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f83-a55d-7b6ff28a9c1c",
+          "renewal_date": "2026-04-21",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70e2-877d-c7ba73253172",
+          "renewal_date": "2026-02-20",
+          "lead_days": 32.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70f8-95b6-6a964283d4d8",
+          "renewal_date": "2026-04-01",
+          "lead_days": 30.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-726b-852c-93febf442585",
+          "renewal_date": "2026-03-12",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-72e6-b754-bef1137dfa76",
+          "renewal_date": "2026-07-07",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-73be-80fb-ecb3b21551eb",
+          "renewal_date": "2026-06-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-748e-bd3e-c8a7451a478e",
+          "renewal_date": "2026-07-04",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7494-9d5f-f2889f6208a0",
+          "renewal_date": "2026-07-04",
+          "lead_days": 26.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c2-82b7-2f390c03fba2",
+          "renewal_date": "2026-07-12",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c8-83bd-bdad97558705",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-750a-b606-8009dbc6010c",
+          "renewal_date": "2026-02-25",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7515-9c65-09a1f7660ddc",
+          "renewal_date": "2026-04-11",
+          "lead_days": 12.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-75d7-88a0-4305f75318a9",
+          "renewal_date": "2026-05-12",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7635-98d7-d72185b3212d",
+          "renewal_date": "2026-04-28",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76e7-9976-bf6779c11f39",
+          "renewal_date": "2026-02-20",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76f2-a57f-cf08d30a4e78",
+          "renewal_date": "2026-02-11",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-78bc-9987-7287beaa00e4",
+          "renewal_date": "2026-07-11",
+          "lead_days": 68.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-79e7-b0ad-a54c119b8226",
+          "renewal_date": "2026-06-06",
+          "lead_days": 33.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b1d-bb94-fbc4fa5ca12c",
+          "renewal_date": "2026-03-07",
+          "lead_days": 61.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b91-ae3e-9b2ae7116763",
+          "renewal_date": "2026-07-24",
+          "lead_days": 32.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7d0a-af78-8c44bb76c0a3",
+          "renewal_date": "2026-06-15",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7dc5-8201-9ec1098f2c93",
+          "renewal_date": "2026-02-06",
+          "lead_days": 46.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7def-91d2-3415de347bff",
+          "renewal_date": "2026-06-11",
+          "lead_days": 73.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7e2b-8c25-26e735c41fa7",
+          "renewal_date": "2026-02-23",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-708d-8052-cec45f164680",
+          "renewal_date": "2026-07-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7189-88b9-ef6000f94466",
+          "renewal_date": "2026-07-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-71d5-ad22-7f77a2d680c1",
+          "renewal_date": "2026-07-25",
+          "lead_days": 19.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7273-b1d6-9e8b101f524a",
+          "renewal_date": "2026-03-04",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7287-8fe0-79b43d473397",
+          "renewal_date": "2026-06-17",
+          "lead_days": 9.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-72f8-a0a3-9ba4658cec01",
+          "renewal_date": "2026-04-15",
+          "lead_days": 9.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-730a-bacb-529ee00f2b5b",
+          "renewal_date": "2026-01-29",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7391-9379-9a0b2e0f425c",
+          "renewal_date": "2026-06-22",
+          "lead_days": 7.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7431-a62a-d61f2ed88dab",
+          "renewal_date": "2026-04-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7477-9cb9-824d7f34d349",
+          "renewal_date": "2026-06-17",
+          "lead_days": 9.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-76cf-988b-b4ebce7541ca",
+          "renewal_date": "2026-07-17",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-774e-a4f8-c55efbcdfe26",
+          "renewal_date": "2026-05-09",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7821-9c0f-09d21233cad5",
+          "renewal_date": "2026-01-29",
+          "lead_days": 66.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78af-9f29-98c66d87c674",
+          "renewal_date": "2026-01-30",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78ec-a424-f193be49fdcf",
+          "renewal_date": "2026-07-12",
+          "lead_days": 34.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7967-847d-d85e91967f97",
+          "renewal_date": "2026-07-07",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-79f5-98ae-b175db38d173",
+          "renewal_date": "2026-02-03",
+          "lead_days": 29.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7a9c-8338-5950159650cb",
+          "renewal_date": "2026-02-02",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7b57-9177-1f10f9c19273",
+          "renewal_date": "2026-07-28",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c51-959d-fd4d9dd59aba",
+          "renewal_date": "2026-05-25",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c6d-9019-63969f34ce7c",
+          "renewal_date": "2026-04-10",
+          "lead_days": 67.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d0b-ab03-3a806dbba294",
+          "renewal_date": "2026-04-24",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d2c-ba63-576ecc66fa54",
+          "renewal_date": "2026-07-18",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7e05-8b87-83a535fc2a47",
+          "renewal_date": "2026-02-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f0a-852b-b5b34502e22e",
+          "renewal_date": "2026-07-01",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f57-8bba-fb48e942e88c",
+          "renewal_date": "2026-04-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fb3-a851-7140735fd24c",
+          "renewal_date": "2026-03-14",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fe0-b651-f434c6ea8efd",
+          "renewal_date": "2026-06-25",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7004-80d7-1f6fdc7f3344",
+          "renewal_date": "2026-06-02",
+          "lead_days": 1.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-710c-93ea-dc7514c36b99",
+          "renewal_date": "2026-04-13",
+          "lead_days": 7.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7129-b8b7-f30770c21ac8",
+          "renewal_date": "2026-05-28",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7324-8099-5f63941b5adf",
+          "renewal_date": "2026-07-12",
+          "lead_days": 62.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-74d8-85c1-dfbc2bcac7da",
+          "renewal_date": "2026-04-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-759c-a93a-e3f5f8b1a0aa",
+          "renewal_date": "2026-02-23",
+          "lead_days": 14.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-77ed-a283-a6ebb20d2feb",
+          "renewal_date": "2026-04-27",
+          "lead_days": 49.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7866-ad34-4e22700f61a8",
+          "renewal_date": "2026-03-18",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7884-8645-1d6eb9e2d520",
+          "renewal_date": "2026-05-15",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7964-9e06-fc0c2723d1c1",
+          "renewal_date": "2026-06-04",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7a9a-b50a-76f538303e15",
+          "renewal_date": "2026-02-05",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c03-866b-5eb7b133daca",
+          "renewal_date": "2026-01-30",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a568-02da64f097f8",
+          "renewal_date": "2026-02-22",
+          "lead_days": 62.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a7dc-2ac27d553e17",
+          "renewal_date": "2026-06-20",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7d65-9488-5bb186d7c469",
+          "renewal_date": "2026-03-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7e7c-b8f8-dabd2fef02c7",
+          "renewal_date": "2026-05-21",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f34-8a84-194f9c3e1acf",
+          "renewal_date": "2026-07-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f6a-9b7d-23e7fd960746",
+          "renewal_date": "2026-03-21",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f95-8439-69895fdaa3c9",
+          "renewal_date": "2026-04-19",
+          "lead_days": 90.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7fce-9b8b-8db0013b7600",
+          "renewal_date": "2026-02-28",
+          "lead_days": 54.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7093-a08c-b4232633f0a2",
+          "renewal_date": "2026-03-30",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7098-8488-ad0666116643",
+          "renewal_date": "2026-03-18",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-709e-be3c-ff8caf74dcb7",
+          "renewal_date": "2026-07-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-713f-9fb0-2d842ef37d47",
+          "renewal_date": "2026-06-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-718f-8e5b-02565ea7e740",
+          "renewal_date": "2026-04-24",
+          "lead_days": 88.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-724f-bd8f-9d56e13ba19a",
+          "renewal_date": "2026-04-06",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-72b0-9900-1e4f459b3532",
+          "renewal_date": "2026-04-16",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-74a4-8ebc-d2b9d3aab402",
+          "renewal_date": "2026-04-28",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-75b0-b2ff-f5b000f7c0ae",
+          "renewal_date": "2026-05-29",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-76e7-85ad-e7c7e715d96f",
+          "renewal_date": "2026-02-19",
+          "lead_days": 24.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7806-ade7-d535826f4174",
+          "renewal_date": "2026-01-29",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-78c2-968c-3fa1d83697e5",
+          "renewal_date": "2026-06-12",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7b52-b22f-03e402859158",
+          "renewal_date": "2026-07-05",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba6-a984-be6f14030bb4",
+          "renewal_date": "2026-04-19",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba7-bc0f-c15c8ed16645",
+          "renewal_date": "2026-05-10",
+          "lead_days": 41.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7bd9-82a0-be112cb70563",
+          "renewal_date": "2026-03-24",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ce2-8b2f-004f81d9e38e",
+          "renewal_date": "2026-06-19",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7f22-a77a-96dc394c40da",
+          "renewal_date": "2026-06-26",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7fd0-8ef2-42aac76b231a",
+          "renewal_date": "2026-03-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-71b0-9da0-06bfff9423e1",
+          "renewal_date": "2026-07-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7252-88bb-4f90d55e61d9",
+          "renewal_date": "2026-02-21",
+          "lead_days": 75.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7491-9d9b-f1bf93014133",
+          "renewal_date": "2026-06-06",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7bf6-ba56-9cd93c532cc4",
+          "renewal_date": "2026-06-28",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7d1d-8ee3-01091c08e043",
+          "renewal_date": "2026-06-10",
+          "lead_days": 51.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7e94-9bdc-98bb95c8616d",
+          "renewal_date": "2026-05-18",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7115-bee3-cef6e8deac84",
+          "renewal_date": "2026-03-19",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7122-b99f-0c9681a79533",
+          "renewal_date": "2026-03-10",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7196-9a6b-3a016dd5daec",
+          "renewal_date": "2026-03-18",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7400-8e45-5bf98ffb66cd",
+          "renewal_date": "2026-04-27",
+          "lead_days": 63.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-74e1-852a-5726eedd6439",
+          "renewal_date": "2026-05-09",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7519-a152-b2b798e338c3",
+          "renewal_date": "2026-04-01",
+          "lead_days": 16.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7531-b217-bd455e593e19",
+          "renewal_date": "2026-04-01",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-76c6-ae56-cd92ecd884b5",
+          "renewal_date": "2026-06-07",
+          "lead_days": 6.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-77d2-bba8-9c096fb3da44",
+          "renewal_date": "2026-07-15",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7895-be2a-b02c8818963c",
+          "renewal_date": "2026-05-13",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-797b-a116-b2a38cd391b2",
+          "renewal_date": "2026-03-17",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79d6-b0a2-a3be5dbe471c",
+          "renewal_date": "2026-04-03",
+          "lead_days": 88.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79db-9460-20c92aa34e03",
+          "renewal_date": "2026-05-27",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d02-b807-7079704cc925",
+          "renewal_date": "2026-03-30",
+          "lead_days": 63.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d8b-a447-a204126abf90",
+          "renewal_date": "2026-03-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7db9-91a9-5202ec62bd06",
+          "renewal_date": "2026-05-16",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-717b-abea-f29ab7139511",
+          "renewal_date": "2026-06-01",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-72a5-8059-9aeeb7713133",
+          "renewal_date": "2026-03-09",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7430-9dbb-3d1fac87308a",
+          "renewal_date": "2026-04-19",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-74a6-a4be-c421f9a01b46",
+          "renewal_date": "2026-02-07",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7567-a22f-5eecae19f3d5",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-75b8-b163-f1204eb0a0fc",
+          "renewal_date": "2026-05-25",
+          "lead_days": 21.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7795-94f1-f1adb06dc770",
+          "renewal_date": "2026-06-30",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-784a-962c-fc8782a8f64c",
+          "renewal_date": "2026-02-09",
+          "lead_days": 63.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ad0-a983-51275416077e",
+          "renewal_date": "2026-05-29",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ade-852c-20c105f6d0a7",
+          "renewal_date": "2026-05-19",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7bab-9a0a-f2941f01937c",
+          "renewal_date": "2026-04-07",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7c67-8b25-1bfdef0ebcae",
+          "renewal_date": "2026-06-01",
+          "lead_days": 63.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7f11-b47e-18f59f6b0b2c",
+          "renewal_date": "2026-06-13",
+          "lead_days": 47.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7fd7-8f7b-80bf0c331e94",
+          "renewal_date": "2026-04-22",
+          "lead_days": 51.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-71ac-b1da-a9004fb131c4",
+          "renewal_date": "2026-04-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-731c-8772-3dc46a7149a0",
+          "renewal_date": "2026-04-20",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-74f1-a88b-3c807540b919",
+          "renewal_date": "2026-06-09",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c04-a2e2-9b118ec98410",
+          "renewal_date": "2026-07-06",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c1b-9bea-9edad89c92a7",
+          "renewal_date": "2026-05-08",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7d5d-bb55-5b4c9285d53f",
+          "renewal_date": "2026-03-15",
+          "lead_days": 83.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7f93-86f3-5624702cf097",
+          "renewal_date": "2026-03-04",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7019-bd9f-d798bb7a482a",
+          "renewal_date": "2026-01-29",
+          "lead_days": 59.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-751d-bede-7a89604b1bad",
+          "renewal_date": "2026-07-05",
+          "lead_days": 55.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-79d8-91f2-e3096198b59f",
+          "renewal_date": "2026-04-11",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7d92-b2df-6c196a11f111",
+          "renewal_date": "2026-06-19",
+          "lead_days": 53.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7f6e-88ec-b43de996f46d",
+          "renewal_date": "2026-07-23",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7fba-9ef0-5e3cdb842fc0",
+          "renewal_date": "2026-07-03",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7068-b90e-2026753b1637",
+          "renewal_date": "2026-07-19",
+          "lead_days": 83.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70b6-abce-69d78ad1d4d0",
+          "renewal_date": "2026-04-19",
+          "lead_days": 48.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70ff-911e-95121e83031d",
+          "renewal_date": "2026-03-19",
+          "lead_days": 73.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-711b-8930-70e181560343",
+          "renewal_date": "2026-04-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71d8-bcd9-3ab9f70116ef",
+          "renewal_date": "2026-03-15",
+          "lead_days": 27.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71f4-8280-6f03975f81a0",
+          "renewal_date": "2026-05-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72e2-b960-426c8e6075d2",
+          "renewal_date": "2026-05-31",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72f4-a90a-8cedf030bc85",
+          "renewal_date": "2026-02-02",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7438-b027-f9b2bbf8e224",
+          "renewal_date": "2026-05-30",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7497-b011-73aecbb58dc7",
+          "renewal_date": "2026-03-18",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7614-a848-95504ec75ead",
+          "renewal_date": "2026-03-06",
+          "lead_days": 46.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-763a-aa5f-37ab93b040a1",
+          "renewal_date": "2026-06-16",
+          "lead_days": 64.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-773e-9cc5-0e361243c1ae",
+          "renewal_date": "2026-04-30",
+          "lead_days": 80.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7811-924c-a498fbdabcce",
+          "renewal_date": "2026-03-31",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7a6d-9a5d-9e0a4c9a94e4",
+          "renewal_date": "2026-02-16",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7b22-899f-37a15b308b2c",
+          "renewal_date": "2026-07-17",
+          "lead_days": 18.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c88-926e-fc60f71dd1d5",
+          "renewal_date": "2026-06-30",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c9b-9979-b7ad5d37e18f",
+          "renewal_date": "2026-02-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7d45-ac73-4e13433ce84a",
+          "renewal_date": "2026-07-21",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7de2-858d-5b0504523b1c",
+          "renewal_date": "2026-02-19",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ebd-9938-d6afccf44ea9",
+          "renewal_date": "2026-05-10",
+          "lead_days": 48.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ed6-af10-6aa26f6e3135",
+          "renewal_date": "2026-05-22",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7209-8444-32e01c0a28c6",
+          "renewal_date": "2026-06-07",
+          "lead_days": 69.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-73d9-b54c-e3bc7ea9c8b7",
+          "renewal_date": "2026-03-20",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7441-a0e4-b5529d4b1e81",
+          "renewal_date": "2026-06-01",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-78da-9bd0-5ba0b8c3d79b",
+          "renewal_date": "2026-06-10",
+          "lead_days": 51.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7558-b467-ef5468ff6fa7",
+          "renewal_date": "2026-06-03",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7579-b227-be05691bc0b1",
+          "renewal_date": "2026-06-17",
+          "lead_days": 44.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-761a-b31d-01269dbff2dd",
+          "renewal_date": "2026-05-12",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-76b1-833a-1f9e5aa14722",
+          "renewal_date": "2026-04-02",
+          "lead_days": 59.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-78d2-863f-99f5553cad84",
+          "renewal_date": "2026-06-24",
+          "lead_days": 16.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7975-816c-304e0742880c",
+          "renewal_date": "2026-04-30",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7a39-892d-292546d68688",
+          "renewal_date": "2026-04-10",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7c41-8b15-1d1a885f249d",
+          "renewal_date": "2026-01-31",
+          "lead_days": NaN,
+          "silent": true
+        }
+      ],
+      "model_version_id": "01a196a2-8937-7a62-9956-43c03e9ee3da"
+    },
+    "lightgbm/recent_18m": {
+      "overall": {
+        "examples": 28103,
+        "positive_examples": 2528,
+        "churned_accounts": 199,
+        "pr_auc": 0.4487,
+        "roc_auc": 0.7754,
+        "brier": 0.0627,
+        "top10_hit_rate": 0.8191,
+        "hit_rate_60d": 0.2412,
+        "median_lead_days": 39.0,
+        "high_band_churn_rate": 0.4896,
+        "base_churn_rate": 0.09,
+        "high_band_lift": 5.44,
+        "calibration_bins": [
+          {
+            "n": 2811,
+            "mean_predicted": 0.0034,
+            "observed_rate": 0.0267
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0096,
+            "observed_rate": 0.0253
+          },
+          {
+            "n": 2811,
+            "mean_predicted": 0.0161,
+            "observed_rate": 0.0381
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0209,
+            "observed_rate": 0.047
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0336,
+            "observed_rate": 0.032
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0431,
+            "observed_rate": 0.048
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.045,
+            "observed_rate": 0.0676
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0581,
+            "observed_rate": 0.0851
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.0892,
+            "observed_rate": 0.1605
+          },
+          {
+            "n": 2810,
+            "mean_predicted": 0.3763,
+            "observed_rate": 0.3694
+          }
+        ],
+        "calibration_max_gap": 0.0713,
+        "silent_churn": {
+          "count": 39,
+          "recall_30d": 0.6667,
+          "lead_days": [
+            90,
+            43,
+            32,
+            50,
+            35,
+            10,
+            39,
+            null,
+            26,
+            null,
+            47,
+            25,
+            null,
+            2,
+            54,
+            1,
+            42,
+            null,
+            83,
+            88,
+            74,
+            24,
+            34,
+            58,
+            77,
+            86,
+            88,
+            19,
+            21,
+            63,
+            54,
+            74,
+            86,
+            55,
+            61,
+            48,
+            80,
+            60,
+            null
+          ]
+        }
+      },
+      "per_tenant": {
+        "01a19693-d5c6-7879-8faf-6d0e642013c1": {
+          "examples": 15468,
+          "positive_examples": 1473,
+          "churned_accounts": 116,
+          "pr_auc": 0.4321,
+          "roc_auc": 0.7758,
+          "brier": 0.0676,
+          "top10_hit_rate": 0.8017,
+          "hit_rate_60d": 0.1466,
+          "median_lead_days": 35.0,
+          "high_band_churn_rate": 0.6497,
+          "base_churn_rate": 0.0952,
+          "high_band_lift": 6.82,
+          "calibration_bins": [
+            {
+              "n": 1547,
+              "mean_predicted": 0.0067,
+              "observed_rate": 0.022
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0095,
+              "observed_rate": 0.0317
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0145,
+              "observed_rate": 0.0336
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0164,
+              "observed_rate": 0.0433
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0194,
+              "observed_rate": 0.0556
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.0422,
+              "observed_rate": 0.0711
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.045,
+              "observed_rate": 0.0679
+            },
+            {
+              "n": 1547,
+              "mean_predicted": 0.049,
+              "observed_rate": 0.0795
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.0772,
+              "observed_rate": 0.1449
+            },
+            {
+              "n": 1546,
+              "mean_predicted": 0.3293,
+              "observed_rate": 0.403
+            }
+          ],
+          "calibration_max_gap": 0.0737,
+          "silent_churn": {
+            "count": 23,
+            "recall_30d": 0.5652,
+            "lead_days": [
+              90,
+              43,
+              32,
+              50,
+              35,
+              10,
+              39,
+              null,
+              26,
+              null,
+              47,
+              25,
+              null,
+              2,
+              54,
+              1,
+              42,
+              null,
+              83,
+              88,
+              74,
+              24,
+              34
+            ]
+          }
+        },
+        "01a19693-ecb9-7c94-87e3-79e78098663a": {
+          "examples": 7046,
+          "positive_examples": 545,
+          "churned_accounts": 43,
+          "pr_auc": 0.397,
+          "roc_auc": 0.7818,
+          "brier": 0.0552,
+          "top10_hit_rate": 0.814,
+          "hit_rate_60d": 0.3488,
+          "median_lead_days": 51.0,
+          "high_band_churn_rate": 0.3485,
+          "base_churn_rate": 0.0773,
+          "high_band_lift": 4.51,
+          "calibration_bins": [
+            {
+              "n": 705,
+              "mean_predicted": 0.0125,
+              "observed_rate": 0.0156
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0247,
+              "observed_rate": 0.0312
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0247,
+              "observed_rate": 0.0355
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0316,
+              "observed_rate": 0.0326
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0428,
+              "observed_rate": 0.0255
+            },
+            {
+              "n": 705,
+              "mean_predicted": 0.0467,
+              "observed_rate": 0.0298
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0614,
+              "observed_rate": 0.054
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.0749,
+              "observed_rate": 0.1023
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.1222,
+              "observed_rate": 0.0994
+            },
+            {
+              "n": 704,
+              "mean_predicted": 0.3814,
+              "observed_rate": 0.348
+            }
+          ],
+          "calibration_max_gap": 0.0334,
+          "silent_churn": {
+            "count": 10,
+            "recall_30d": 0.8,
+            "lead_days": [
+              58,
+              77,
+              86,
+              88,
+              19,
+              21,
+              63,
+              54,
+              74,
+              86
+            ]
+          }
+        },
+        "01a19693-fa7e-7454-b5c2-e6caf6664e96": {
+          "examples": 4457,
+          "positive_examples": 407,
+          "churned_accounts": 32,
+          "pr_auc": 0.5014,
+          "roc_auc": 0.8123,
+          "brier": 0.0581,
+          "top10_hit_rate": 0.875,
+          "hit_rate_60d": 0.4375,
+          "median_lead_days": 60.0,
+          "high_band_churn_rate": 0.4403,
+          "base_churn_rate": 0.0913,
+          "high_band_lift": 4.82,
+          "calibration_bins": [
+            {
+              "n": 446,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0224
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0202
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0286,
+              "observed_rate": 0.0291
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0395,
+              "observed_rate": 0.0404
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0395,
+              "observed_rate": 0.0202
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0405,
+              "observed_rate": 0.0471
+            },
+            {
+              "n": 446,
+              "mean_predicted": 0.0405,
+              "observed_rate": 0.074
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.0674,
+              "observed_rate": 0.0719
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.1129,
+              "observed_rate": 0.1236
+            },
+            {
+              "n": 445,
+              "mean_predicted": 0.5028,
+              "observed_rate": 0.4652
+            }
+          ],
+          "calibration_max_gap": 0.0376,
+          "silent_churn": {
+            "count": 4,
+            "recall_30d": 1.0,
+            "lead_days": [
+              55,
+              61,
+              48,
+              80
+            ]
+          }
+        },
+        "01a19694-044c-7178-a1dd-4a5a37382cd9": {
+          "examples": 1132,
+          "positive_examples": 103,
+          "churned_accounts": 8,
+          "pr_auc": 0.5167,
+          "roc_auc": 0.7586,
+          "brier": 0.0609,
+          "top10_hit_rate": 0.875,
+          "hit_rate_60d": 0.25,
+          "median_lead_days": 44.0,
+          "high_band_churn_rate": 1.0,
+          "base_churn_rate": 0.091,
+          "high_band_lift": 10.99,
+          "calibration_bins": [
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0614
+            },
+            {
+              "n": 114,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0614
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0708
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.001,
+              "observed_rate": 0.0354
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0023,
+              "observed_rate": 0.0265
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0089,
+              "observed_rate": 0.0088
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0149,
+              "observed_rate": 0.0
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.026,
+              "observed_rate": 0.0265
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.0478,
+              "observed_rate": 0.1416
+            },
+            {
+              "n": 113,
+              "mean_predicted": 0.2802,
+              "observed_rate": 0.4779
+            }
+          ],
+          "calibration_max_gap": 0.1977,
+          "silent_churn": {
+            "count": 2,
+            "recall_30d": 0.5,
+            "lead_days": [
+              60,
+              null
+            ]
+          }
+        }
+      },
+      "driver_recovery": {
+        "top10_signals": [
+          "days_to_renewal",
+          "usage_trend_60d",
+          "sessions_per_user",
+          "cancel_at_period_end",
+          "active_user_ratio",
+          "days_since_csm_email",
+          "bad_csat_90d",
+          "median_resolution_days_90d",
+          "opp_at_risk_90d",
+          "seat_utilisation"
+        ],
+        "drivers": {
+          "usage_decline": true,
+          "seat_underutilisation": true,
+          "ticket_spike_slow_resolution": true,
+          "payment_failures": false,
+          "champion_departure": false,
+          "no_csm_contact": true
+        },
+        "recovered_count": 4,
+        "mean_abs_contribution": {
+          "days_to_renewal": 0.2132,
+          "usage_trend_60d": 0.1456,
+          "sessions_per_user": 0.1224,
+          "cancel_at_period_end": 0.12,
+          "active_user_ratio": 0.1114,
+          "days_since_csm_email": 0.1075,
+          "bad_csat_90d": 0.0933,
+          "median_resolution_days_90d": 0.089,
+          "opp_at_risk_90d": 0.0704,
+          "seat_utilisation": 0.0628,
+          "days_since_invoice_paid": 0.0625,
+          "ticket_trend": 0.0621,
+          "log_arr": 0.053,
+          "payment_failures_90d": 0.0495,
+          "champion_removed_90d": 0.049,
+          "sessions_trend_60d": 0.0468,
+          "max_payment_attempt_90d": 0.039,
+          "tenure_days": 0.0336,
+          "high_urgent_tickets_90d": 0.0263,
+          "high_urgent_tickets_30d": 0.0216,
+          "tickets_90d": 0.0215,
+          "open_tickets": 0.0199,
+          "csm_emails_90d": 0.0157,
+          "net_contacts_change_90d": 0.0087,
+          "tickets_30d": 0.0079,
+          "is_monthly": 0.0061,
+          "bounces_90d": 0.005,
+          "days_since_usage": 0.0031,
+          "customer_emails_90d": 0.0006,
+          "urgent_tickets_30d": 0.0
+        }
+      },
+      "success_criteria": {
+        "SC-001_hit_rate_60d_ge_0.70": false,
+        "SC-002_high_band_lift_ge_3": true,
+        "SC-004_calibration_gap_le_0.10": true,
+        "SC-012_silent_recall_30d_ge_0.70": false,
+        "SC-011_drivers_recovered_ge_5": false
+      },
+      "churner_leads": [
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-710c-a14a-6035aeed23f0",
+          "renewal_date": "2026-03-10",
+          "lead_days": 64.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-719f-a14f-f363c57c10d1",
+          "renewal_date": "2026-02-03",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7270-aac0-2f201a0f452d",
+          "renewal_date": "2026-07-23",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72ac-a443-e14337a5c360",
+          "renewal_date": "2026-06-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-72e6-911a-84730c2cab90",
+          "renewal_date": "2026-04-05",
+          "lead_days": 55.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7301-88a7-1fbb790bd717",
+          "renewal_date": "2026-01-31",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7302-b8a4-8543fcc5ce27",
+          "renewal_date": "2026-02-09",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-751a-b57f-a9579c1a31bc",
+          "renewal_date": "2026-05-03",
+          "lead_days": 90.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7561-ba24-ec4d8e9bfede",
+          "renewal_date": "2026-06-05",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7696-8ef5-adb327bee6a2",
+          "renewal_date": "2026-07-03",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-769f-a600-010c71fef753",
+          "renewal_date": "2026-04-17",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ad-8055-fc7d9c24543f",
+          "renewal_date": "2026-05-26",
+          "lead_days": 43.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-76ce-a5a9-13a6f83a7da5",
+          "renewal_date": "2026-07-11",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7842-8514-f6dbe871f638",
+          "renewal_date": "2026-03-27",
+          "lead_days": 32.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7942-b6bb-cfbf48410ea8",
+          "renewal_date": "2026-04-20",
+          "lead_days": 49.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7976-b3ec-16709fe2251a",
+          "renewal_date": "2026-03-07",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7a09-9cdf-6b1cbb053186",
+          "renewal_date": "2026-05-19",
+          "lead_days": 50.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7af1-bde8-bff9f48cbed7",
+          "renewal_date": "2026-04-22",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7b11-958d-4b3f91098c6e",
+          "renewal_date": "2026-06-04",
+          "lead_days": 45.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7bbe-b07c-40cf8772aed7",
+          "renewal_date": "2026-02-08",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7c2a-a9a3-408da87b9071",
+          "renewal_date": "2026-05-04",
+          "lead_days": 35.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7cc8-99bd-4ca0245a3df5",
+          "renewal_date": "2026-02-19",
+          "lead_days": 10.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7e93-a222-8cb57e4e7542",
+          "renewal_date": "2026-04-14",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f10-aa71-b260c0fa50b9",
+          "renewal_date": "2026-03-19",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f67-9a5b-f80f13602cd5",
+          "renewal_date": "2026-07-13",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b09-7f83-a55d-7b6ff28a9c1c",
+          "renewal_date": "2026-04-21",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70e2-877d-c7ba73253172",
+          "renewal_date": "2026-02-20",
+          "lead_days": 39.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-70f8-95b6-6a964283d4d8",
+          "renewal_date": "2026-04-01",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-726b-852c-93febf442585",
+          "renewal_date": "2026-03-12",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-72e6-b754-bef1137dfa76",
+          "renewal_date": "2026-07-07",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-73be-80fb-ecb3b21551eb",
+          "renewal_date": "2026-06-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-748e-bd3e-c8a7451a478e",
+          "renewal_date": "2026-07-04",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7494-9d5f-f2889f6208a0",
+          "renewal_date": "2026-07-04",
+          "lead_days": 26.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c2-82b7-2f390c03fba2",
+          "renewal_date": "2026-07-12",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-74c8-83bd-bdad97558705",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-750a-b606-8009dbc6010c",
+          "renewal_date": "2026-02-25",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7515-9c65-09a1f7660ddc",
+          "renewal_date": "2026-04-11",
+          "lead_days": 5.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-75d7-88a0-4305f75318a9",
+          "renewal_date": "2026-05-12",
+          "lead_days": 15.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7635-98d7-d72185b3212d",
+          "renewal_date": "2026-04-28",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76e7-9976-bf6779c11f39",
+          "renewal_date": "2026-02-20",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-76f2-a57f-cf08d30a4e78",
+          "renewal_date": "2026-02-11",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-78bc-9987-7287beaa00e4",
+          "renewal_date": "2026-07-11",
+          "lead_days": 68.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-79e7-b0ad-a54c119b8226",
+          "renewal_date": "2026-06-06",
+          "lead_days": 33.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b1d-bb94-fbc4fa5ca12c",
+          "renewal_date": "2026-03-07",
+          "lead_days": 47.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7b91-ae3e-9b2ae7116763",
+          "renewal_date": "2026-07-24",
+          "lead_days": 32.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7d0a-af78-8c44bb76c0a3",
+          "renewal_date": "2026-06-15",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7dc5-8201-9ec1098f2c93",
+          "renewal_date": "2026-02-06",
+          "lead_days": 25.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7def-91d2-3415de347bff",
+          "renewal_date": "2026-06-11",
+          "lead_days": 73.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0a-7e2b-8c25-26e735c41fa7",
+          "renewal_date": "2026-02-23",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-708d-8052-cec45f164680",
+          "renewal_date": "2026-07-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7189-88b9-ef6000f94466",
+          "renewal_date": "2026-07-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-71d5-ad22-7f77a2d680c1",
+          "renewal_date": "2026-07-25",
+          "lead_days": 19.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7273-b1d6-9e8b101f524a",
+          "renewal_date": "2026-03-04",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7287-8fe0-79b43d473397",
+          "renewal_date": "2026-06-17",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-72f8-a0a3-9ba4658cec01",
+          "renewal_date": "2026-04-15",
+          "lead_days": 2.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-730a-bacb-529ee00f2b5b",
+          "renewal_date": "2026-01-29",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7391-9379-9a0b2e0f425c",
+          "renewal_date": "2026-06-22",
+          "lead_days": 7.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7431-a62a-d61f2ed88dab",
+          "renewal_date": "2026-04-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7477-9cb9-824d7f34d349",
+          "renewal_date": "2026-06-17",
+          "lead_days": 9.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-76cf-988b-b4ebce7541ca",
+          "renewal_date": "2026-07-17",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-774e-a4f8-c55efbcdfe26",
+          "renewal_date": "2026-05-09",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7821-9c0f-09d21233cad5",
+          "renewal_date": "2026-01-29",
+          "lead_days": 24.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78af-9f29-98c66d87c674",
+          "renewal_date": "2026-01-30",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-78ec-a424-f193be49fdcf",
+          "renewal_date": "2026-07-12",
+          "lead_days": 34.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7967-847d-d85e91967f97",
+          "renewal_date": "2026-07-07",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-79f5-98ae-b175db38d173",
+          "renewal_date": "2026-02-03",
+          "lead_days": 29.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7a9c-8338-5950159650cb",
+          "renewal_date": "2026-02-02",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7b57-9177-1f10f9c19273",
+          "renewal_date": "2026-07-28",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c51-959d-fd4d9dd59aba",
+          "renewal_date": "2026-05-25",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7c6d-9019-63969f34ce7c",
+          "renewal_date": "2026-04-10",
+          "lead_days": 67.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d0b-ab03-3a806dbba294",
+          "renewal_date": "2026-04-24",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7d2c-ba63-576ecc66fa54",
+          "renewal_date": "2026-07-18",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7e05-8b87-83a535fc2a47",
+          "renewal_date": "2026-02-25",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f0a-852b-b5b34502e22e",
+          "renewal_date": "2026-07-01",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7f57-8bba-fb48e942e88c",
+          "renewal_date": "2026-04-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fb3-a851-7140735fd24c",
+          "renewal_date": "2026-03-14",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0b-7fe0-b651-f434c6ea8efd",
+          "renewal_date": "2026-06-25",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7004-80d7-1f6fdc7f3344",
+          "renewal_date": "2026-06-02",
+          "lead_days": 1.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-710c-93ea-dc7514c36b99",
+          "renewal_date": "2026-04-13",
+          "lead_days": 7.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7129-b8b7-f30770c21ac8",
+          "renewal_date": "2026-05-28",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7324-8099-5f63941b5adf",
+          "renewal_date": "2026-07-12",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-74d8-85c1-dfbc2bcac7da",
+          "renewal_date": "2026-04-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-759c-a93a-e3f5f8b1a0aa",
+          "renewal_date": "2026-02-23",
+          "lead_days": 14.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-77ed-a283-a6ebb20d2feb",
+          "renewal_date": "2026-04-27",
+          "lead_days": 42.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7866-ad34-4e22700f61a8",
+          "renewal_date": "2026-03-18",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7884-8645-1d6eb9e2d520",
+          "renewal_date": "2026-05-15",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7964-9e06-fc0c2723d1c1",
+          "renewal_date": "2026-06-04",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7a9a-b50a-76f538303e15",
+          "renewal_date": "2026-02-05",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c03-866b-5eb7b133daca",
+          "renewal_date": "2026-01-30",
+          "lead_days": 25.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a568-02da64f097f8",
+          "renewal_date": "2026-02-22",
+          "lead_days": 62.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7c8e-a7dc-2ac27d553e17",
+          "renewal_date": "2026-06-20",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7d65-9488-5bb186d7c469",
+          "renewal_date": "2026-03-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7e7c-b8f8-dabd2fef02c7",
+          "renewal_date": "2026-05-21",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f34-8a84-194f9c3e1acf",
+          "renewal_date": "2026-07-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f6a-9b7d-23e7fd960746",
+          "renewal_date": "2026-03-21",
+          "lead_days": NaN,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7f95-8439-69895fdaa3c9",
+          "renewal_date": "2026-04-19",
+          "lead_days": 83.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0c-7fce-9b8b-8db0013b7600",
+          "renewal_date": "2026-02-28",
+          "lead_days": 54.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7093-a08c-b4232633f0a2",
+          "renewal_date": "2026-03-30",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7098-8488-ad0666116643",
+          "renewal_date": "2026-03-18",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-709e-be3c-ff8caf74dcb7",
+          "renewal_date": "2026-07-18",
+          "lead_days": 26.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-713f-9fb0-2d842ef37d47",
+          "renewal_date": "2026-06-27",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-718f-8e5b-02565ea7e740",
+          "renewal_date": "2026-04-24",
+          "lead_days": 88.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-724f-bd8f-9d56e13ba19a",
+          "renewal_date": "2026-04-06",
+          "lead_days": 35.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-72b0-9900-1e4f459b3532",
+          "renewal_date": "2026-04-16",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-74a4-8ebc-d2b9d3aab402",
+          "renewal_date": "2026-04-28",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-75b0-b2ff-f5b000f7c0ae",
+          "renewal_date": "2026-05-29",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-76e7-85ad-e7c7e715d96f",
+          "renewal_date": "2026-02-19",
+          "lead_days": 24.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7806-ade7-d535826f4174",
+          "renewal_date": "2026-01-29",
+          "lead_days": 10.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-78c2-968c-3fa1d83697e5",
+          "renewal_date": "2026-06-12",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7b52-b22f-03e402859158",
+          "renewal_date": "2026-07-05",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba6-a984-be6f14030bb4",
+          "renewal_date": "2026-04-19",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ba7-bc0f-c15c8ed16645",
+          "renewal_date": "2026-05-10",
+          "lead_days": 34.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7bd9-82a0-be112cb70563",
+          "renewal_date": "2026-03-24",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7ce2-8b2f-004f81d9e38e",
+          "renewal_date": "2026-06-19",
+          "lead_days": 11.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7f22-a77a-96dc394c40da",
+          "renewal_date": "2026-06-26",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-d5c6-7879-8faf-6d0e642013c1",
+          "account_id": "01a19694-3b0d-7fd0-8ef2-42aac76b231a",
+          "renewal_date": "2026-03-11",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-71b0-9da0-06bfff9423e1",
+          "renewal_date": "2026-07-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7252-88bb-4f90d55e61d9",
+          "renewal_date": "2026-02-21",
+          "lead_days": 75.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7491-9d9b-f1bf93014133",
+          "renewal_date": "2026-06-06",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7bf6-ba56-9cd93c532cc4",
+          "renewal_date": "2026-06-28",
+          "lead_days": 41.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7d1d-8ee3-01091c08e043",
+          "renewal_date": "2026-06-10",
+          "lead_days": 58.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0d-7e94-9bdc-98bb95c8616d",
+          "renewal_date": "2026-05-18",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7115-bee3-cef6e8deac84",
+          "renewal_date": "2026-03-19",
+          "lead_days": 31.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7122-b99f-0c9681a79533",
+          "renewal_date": "2026-03-10",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7196-9a6b-3a016dd5daec",
+          "renewal_date": "2026-03-18",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7400-8e45-5bf98ffb66cd",
+          "renewal_date": "2026-04-27",
+          "lead_days": 77.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-74e1-852a-5726eedd6439",
+          "renewal_date": "2026-05-09",
+          "lead_days": 40.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7519-a152-b2b798e338c3",
+          "renewal_date": "2026-04-01",
+          "lead_days": 16.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7531-b217-bd455e593e19",
+          "renewal_date": "2026-04-01",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-76c6-ae56-cd92ecd884b5",
+          "renewal_date": "2026-06-07",
+          "lead_days": 6.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-77d2-bba8-9c096fb3da44",
+          "renewal_date": "2026-07-15",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7895-be2a-b02c8818963c",
+          "renewal_date": "2026-05-13",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-797b-a116-b2a38cd391b2",
+          "renewal_date": "2026-03-17",
+          "lead_days": 36.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79d6-b0a2-a3be5dbe471c",
+          "renewal_date": "2026-04-03",
+          "lead_days": 88.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-79db-9460-20c92aa34e03",
+          "renewal_date": "2026-05-27",
+          "lead_days": 37.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d02-b807-7079704cc925",
+          "renewal_date": "2026-03-30",
+          "lead_days": 63.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7d8b-a447-a204126abf90",
+          "renewal_date": "2026-03-01",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0e-7db9-91a9-5202ec62bd06",
+          "renewal_date": "2026-05-16",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-717b-abea-f29ab7139511",
+          "renewal_date": "2026-06-01",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-72a5-8059-9aeeb7713133",
+          "renewal_date": "2026-03-09",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7430-9dbb-3d1fac87308a",
+          "renewal_date": "2026-04-19",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-74a6-a4be-c421f9a01b46",
+          "renewal_date": "2026-02-07",
+          "lead_days": 19.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7567-a22f-5eecae19f3d5",
+          "renewal_date": "2026-02-12",
+          "lead_days": 3.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-75b8-b163-f1204eb0a0fc",
+          "renewal_date": "2026-05-25",
+          "lead_days": 21.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7795-94f1-f1adb06dc770",
+          "renewal_date": "2026-06-30",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-784a-962c-fc8782a8f64c",
+          "renewal_date": "2026-02-09",
+          "lead_days": 63.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ad0-a983-51275416077e",
+          "renewal_date": "2026-05-29",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7ade-852c-20c105f6d0a7",
+          "renewal_date": "2026-05-19",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7bab-9a0a-f2941f01937c",
+          "renewal_date": "2026-04-07",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7c67-8b25-1bfdef0ebcae",
+          "renewal_date": "2026-06-01",
+          "lead_days": 70.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7f11-b47e-18f59f6b0b2c",
+          "renewal_date": "2026-06-13",
+          "lead_days": 54.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b0f-7fd7-8f7b-80bf0c331e94",
+          "renewal_date": "2026-04-22",
+          "lead_days": 51.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-71ac-b1da-a9004fb131c4",
+          "renewal_date": "2026-04-28",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-731c-8772-3dc46a7149a0",
+          "renewal_date": "2026-04-20",
+          "lead_days": 63.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-74f1-a88b-3c807540b919",
+          "renewal_date": "2026-06-09",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c04-a2e2-9b118ec98410",
+          "renewal_date": "2026-07-06",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7c1b-9bea-9edad89c92a7",
+          "renewal_date": "2026-05-08",
+          "lead_days": 74.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7d5d-bb55-5b4c9285d53f",
+          "renewal_date": "2026-03-15",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-ecb9-7c94-87e3-79e78098663a",
+          "account_id": "01a19694-3b10-7f93-86f3-5624702cf097",
+          "renewal_date": "2026-03-04",
+          "lead_days": 86.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7019-bd9f-d798bb7a482a",
+          "renewal_date": "2026-01-29",
+          "lead_days": 59.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-751d-bede-7a89604b1bad",
+          "renewal_date": "2026-07-05",
+          "lead_days": 55.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-79d8-91f2-e3096198b59f",
+          "renewal_date": "2026-04-11",
+          "lead_days": 61.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7d92-b2df-6c196a11f111",
+          "renewal_date": "2026-06-19",
+          "lead_days": 53.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7f6e-88ec-b43de996f46d",
+          "renewal_date": "2026-07-23",
+          "lead_days": 87.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b10-7fba-9ef0-5e3cdb842fc0",
+          "renewal_date": "2026-07-03",
+          "lead_days": 88.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7068-b90e-2026753b1637",
+          "renewal_date": "2026-07-19",
+          "lead_days": 83.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70b6-abce-69d78ad1d4d0",
+          "renewal_date": "2026-04-19",
+          "lead_days": 48.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-70ff-911e-95121e83031d",
+          "renewal_date": "2026-03-19",
+          "lead_days": 73.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-711b-8930-70e181560343",
+          "renewal_date": "2026-04-28",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71d8-bcd9-3ab9f70116ef",
+          "renewal_date": "2026-03-15",
+          "lead_days": 27.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-71f4-8280-6f03975f81a0",
+          "renewal_date": "2026-05-10",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72e2-b960-426c8e6075d2",
+          "renewal_date": "2026-05-31",
+          "lead_days": 90.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-72f4-a90a-8cedf030bc85",
+          "renewal_date": "2026-02-02",
+          "lead_days": 28.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7438-b027-f9b2bbf8e224",
+          "renewal_date": "2026-05-30",
+          "lead_days": 89.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7497-b011-73aecbb58dc7",
+          "renewal_date": "2026-03-18",
+          "lead_days": 86.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7614-a848-95504ec75ead",
+          "renewal_date": "2026-03-06",
+          "lead_days": 46.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-763a-aa5f-37ab93b040a1",
+          "renewal_date": "2026-06-16",
+          "lead_days": 71.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-773e-9cc5-0e361243c1ae",
+          "renewal_date": "2026-04-30",
+          "lead_days": 80.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7811-924c-a498fbdabcce",
+          "renewal_date": "2026-03-31",
+          "lead_days": 85.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7a6d-9a5d-9e0a4c9a94e4",
+          "renewal_date": "2026-02-16",
+          "lead_days": 42.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7b22-899f-37a15b308b2c",
+          "renewal_date": "2026-07-17",
+          "lead_days": 18.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c88-926e-fc60f71dd1d5",
+          "renewal_date": "2026-06-30",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7c9b-9979-b7ad5d37e18f",
+          "renewal_date": "2026-02-12",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7d45-ac73-4e13433ce84a",
+          "renewal_date": "2026-07-21",
+          "lead_days": 78.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7de2-858d-5b0504523b1c",
+          "renewal_date": "2026-02-19",
+          "lead_days": 38.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ebd-9938-d6afccf44ea9",
+          "renewal_date": "2026-05-10",
+          "lead_days": 48.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b11-7ed6-af10-6aa26f6e3135",
+          "renewal_date": "2026-05-22",
+          "lead_days": NaN,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7209-8444-32e01c0a28c6",
+          "renewal_date": "2026-06-07",
+          "lead_days": 69.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-73d9-b54c-e3bc7ea9c8b7",
+          "renewal_date": "2026-03-20",
+          "lead_days": 4.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-7441-a0e4-b5529d4b1e81",
+          "renewal_date": "2026-06-01",
+          "lead_days": 84.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19693-fa7e-7454-b5c2-e6caf6664e96",
+          "account_id": "01a19694-3b12-78da-9bd0-5ba0b8c3d79b",
+          "renewal_date": "2026-06-10",
+          "lead_days": 51.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7558-b467-ef5468ff6fa7",
+          "renewal_date": "2026-06-03",
+          "lead_days": 2.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7579-b227-be05691bc0b1",
+          "renewal_date": "2026-06-17",
+          "lead_days": 44.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-761a-b31d-01269dbff2dd",
+          "renewal_date": "2026-05-12",
+          "lead_days": 1.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-76b1-833a-1f9e5aa14722",
+          "renewal_date": "2026-04-02",
+          "lead_days": 52.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-78d2-863f-99f5553cad84",
+          "renewal_date": "2026-06-24",
+          "lead_days": 16.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7975-816c-304e0742880c",
+          "renewal_date": "2026-04-30",
+          "lead_days": 66.0,
+          "silent": false
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7a39-892d-292546d68688",
+          "renewal_date": "2026-04-10",
+          "lead_days": 60.0,
+          "silent": true
+        },
+        {
+          "tenant_id": "01a19694-044c-7178-a1dd-4a5a37382cd9",
+          "account_id": "01a19694-3b12-7c41-8b15-1d1a885f249d",
+          "renewal_date": "2026-01-31",
+          "lead_days": NaN,
+          "silent": true
+        }
+      ],
+      "model_version_id": "01a196a2-8e30-74fe-b710-cbd923acc62e"
+    }
+  }
+}

@@ -4,6 +4,9 @@ A ranked Monday worklist for Customer Success Managers. It shows which of their 
 
 Built for the Fello take-home: synthetic data from 5 sources, a fitted model, an unattended process, multiple tenants, full traceability.
 
+- Live system: https://worklist-web.onrender.com (pick a demo account on the sign-in page)
+- Walkthrough video, in four parts because of Loom's 5-minute limit: [1](https://www.loom.com/share/eccf35422f31479fb68e58deb407f882) · [2](https://www.loom.com/share/dd771ff4bc1a4804a0c2a5982e4a2029) · [3](https://www.loom.com/share/2873bf876c8242bba7ddc542066df7b1) · [4](https://www.loom.com/share/560fb1c0bd2d48e48dcf7bcec9e55583)
+- Slides: [docs/solution-brief.pptx](docs/solution-brief.pptx) ([PDF](docs/solution-brief.pdf))
 - Problem framing and trade-offs: [SOLUTION_BRIEF.md](SOLUTION_BRIEF.md)
 - Spec, plan, research decisions, contracts, tasks: [specs/001-renewal-risk-worklist/](specs/001-renewal-risk-worklist/)
 - Walkthrough outline: [docs/walkthrough.md](docs/walkthrough.md)
@@ -42,6 +45,8 @@ From `reports/eval_2026-10-26.json` (seed 42). 199 churned accounts fell in the 
 | SC-009 alerts per CSM per week | ≤5 | 0.95 | — | Yes |
 
 Per tenant (≥30 churns): Northwind 82% hit / 17% at 60 days / 6.0× lift; Bluefin 84% / 37% / 4.8×; Copperleaf 88% / 41% / 5.3×. Driftwood (8 churns) is too small to judge on its own. Every tenant-specific model lost to the pooled model on that tenant's held-out data and was rejected. Full history and the last 18 months tied on hit rate.
+
+**Training is not bit-for-bit reproducible across databases.** The live deployment was trained on the same generated data (identical data profile) but came out slightly different (`reports/eval_2026-10-26_render.json`): LightGBM hit rate 82.9% vs 83.4%, lift 5.2× vs 5.5×, 60-day hit rate 26.1% vs 25.6%, and Bluefin's tenant-specific model was promoted there (tied on hit rate, better PR-AUC). Every success criterion passes or fails the same way. The cause is that training rows are read from Postgres without an `ORDER BY`, so row order depends on the database; LightGBM itself is seeded and deterministic. The fix is to sort the training frame before fitting.
 
 **Honest reading.**
 - The worklist concentrates risk well: churn is 5.5× more likely in "Act this week" than across all scored accounts, and the percentages are calibrated.
